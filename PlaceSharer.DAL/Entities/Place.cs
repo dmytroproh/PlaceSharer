@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PlaceSharer.BLL
+namespace PlaceSharer.DAL.Entities
 {
-    public class Class1
+    public class Place
     {
     }
 }
