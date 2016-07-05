@@ -44,7 +44,7 @@ namespace PlaceSharer.DAL.Repositories
         {
             get
             {
-                return UserManager;
+                return userManager;
             }
         }
 

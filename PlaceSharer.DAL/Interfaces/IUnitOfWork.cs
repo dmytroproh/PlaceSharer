@@ -5,7 +5,7 @@ using PlaceSharer.DAL.Identity;
 
 namespace PlaceSharer.DAL.Interfaces
 {
-    interface IUnitOfWork : IDisposable
+    public interface IUnitOfWork : IDisposable
     {
         ApplicationUserManager UserManager { get; }
         ApplicationRoleManager RoleManager { get; }

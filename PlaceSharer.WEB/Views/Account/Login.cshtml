@@ -1,0 +1,44 @@
+﻿@model PlaceSharer.WEB.Models.LoginModel
+
+@{
+    ViewBag.Title = "Log In";
+}
+<div class="main">
+    <div id="center">
+        <div class="Log In">
+            <h3>Log In</h3>
+            
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <h4>Login model</h4>
+
+                @Html.ValidationSummary(true,"")
+
+                @Html.LabelFor(model => model.Email)
+                @Html.EditorFor(model => model.Email)
+                @Html.ValidationMessageFor(model => model.Email)
+                <br />
+                @Html.LabelFor(model => model.Password)
+                @Html.EditorFor(model => model.Password)
+                @Html.ValidationMessageFor(model => model.Password)
+                <br />
+                <input type="submit" value="Log in" />
+            }
+
+            <div class="social-buttons facebook">
+                <a href="#">
+                    <span>Facebook</span>
+                </a>
+            </div>
+            <div class="social-buttons twitter">
+                <a href="#">
+                    <span>Twitter</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
