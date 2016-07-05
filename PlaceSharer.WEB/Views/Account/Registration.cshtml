@@ -1,0 +1,73 @@
+﻿@model PlaceSharer.WEB.Models.RegistrationModel
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="main">
+
+    <div id="center">
+        <h3>Registration</h3>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            @Html.ValidationSummary()
+
+            
+            <div>
+                @Html.LabelFor(model => model.Name)
+                @Html.EditorFor(model => model.Name)
+                @Html.ValidationMessageFor(model => model.Name)
+            </div>
+
+            <div>
+                @Html.LabelFor(model => model.LastName)
+                @Html.EditorFor(model => model.LastName)
+                @Html.ValidationMessageFor(model => model.LastName)
+            </div>
+
+            <div>
+                @Html.LabelFor(model => model.Email)
+                @Html.EditorFor(model => model.Email)
+                @Html.ValidationMessageFor(model => model.Email)
+            </div>
+
+            <div>
+                @Html.LabelFor(model => model.UserName)
+                @Html.EditorFor(model => model.UserName)
+                @Html.ValidationMessageFor(model => model.UserName)
+            </div>
+            <div>
+                @Html.LabelFor(model => model.Password)
+                @Html.EditorFor(model => model.Password)
+                @Html.ValidationMessageFor(model => model.Password)
+            </div>
+
+            <div>
+                @Html.LabelFor(model => model.ConfirmPassword)
+                @Html.EditorFor(model => model.ConfirmPassword)
+                @Html.ValidationMessageFor(model => model.ConfirmPassword)
+            </div>
+            <div>
+                <br />
+                <input type="submit" value="Create Account" id="create-account" class="button" />
+            </div>
+        }
+        <div class="sep">
+            <span class="or">OR</span>
+        </div>
+        <div class="connect">
+            <div class="social-buttons facebook">
+                <a href="#">
+                    <span>Facebook</span>
+                </a>
+            </div>
+            <div class="social-buttons twitter">
+                <a href="#">
+                    <span>Twitter</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,78 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using System.Security.Claims;
+using Microsoft.AspNet.Identity;
+using PlaceSharer.BLL.DTO;
+using PlaceSharer.BLL.Infrastructure;
+using PlaceSharer.BLL.Interfaces;
+using PlaceSharer.DAL.Entities;
+using PlaceSharer.DAL.Interfaces;
+
+namespace PlaceSharer.BLL.Services
+{
+    public class UserService : IUserService
+    {
+        IUnitOfWork Database { get; set; }
+
+        public UserService(IUnitOfWork db)
+        {
+            Database = db;
+        }
+
+        public async Task<ClaimsIdentity> Authenticate(UserDTO userDto)
+        {
+            ClaimsIdentity claim = null;
+            ApplicationUser user = await Database.UserManager.FindAsync(userDto.Email, userDto.Password);
+            if (user != null)
+                claim = await Database.UserManager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie);
+            return claim;
+        }
+
+        public async Task<OperationDetails> Create(UserDTO userDto)
+        {
+            ApplicationUser user = await Database.UserManager.FindByEmailAsync(userDto.Email);
+
+            if(user == null)
+            {
+                user = new ApplicationUser { Email = userDto.Email, UserName = userDto.Email };
+                await Database.UserManager.CreateAsync(user, userDto.Password);
+                await Database.UserManager.AddToRoleAsync(user.Id, userDto.Role);
+                ClientProfile clientProfile = new ClientProfile
+                {
+                    Id = user.Id,
+                    Name = userDto.Name,
+                    LastName = userDto.LastName
+                };
+                Database.ClientManager.Create(clientProfile);
+                await Database.SaveAsync();
+
+                return new OperationDetails(true, "Registration completed successfully", "");
+            }
+            else
+            {
+                return new OperationDetails(false, "User with this login already exists", "Email");
+            }
+        }
+
+        
+        public async Task SetInitialData(UserDTO adminDto, List<string> roles)
+        {
+            foreach(string roleName in roles)
+            {
+                var role = await Database.RoleManager.FindByNameAsync(roleName);
+                if(role == null)
+                {
+                    role = new ApplicationRole { Name = roleName };
+                    await Database.RoleManager.CreateAsync(role);
+                }
+            }
+            await Create(adminDto);
+        }
+
+        public void Dispose()
+        {
+            Database.Dispose();
+        }
+    }
+}
