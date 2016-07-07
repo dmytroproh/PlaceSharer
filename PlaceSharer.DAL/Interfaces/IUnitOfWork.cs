@@ -10,6 +10,8 @@ namespace PlaceSharer.DAL.Interfaces
         ApplicationUserManager UserManager { get; }
         ApplicationRoleManager RoleManager { get; }
         IClientManager ClientManager { get; }
+        IPlaceManager PlaceManager { get; }
+        ILocationManager LocationManager { get; }
         Task SaveAsync();
     }
 }

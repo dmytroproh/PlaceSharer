@@ -1,5 +1,4 @@
-﻿using System;
-using PlaceSharer.DAL.EF;
+﻿using PlaceSharer.DAL.EF;
 using PlaceSharer.DAL.Entities;
 using PlaceSharer.DAL.Interfaces;
 
@@ -17,7 +16,6 @@ namespace PlaceSharer.DAL.Repositories
         public void Create(ClientProfile item)
         {
             Database.ClientProfiles.Add(item);
-            Database.SaveChanges();
         }
 
         public void Dispose()
