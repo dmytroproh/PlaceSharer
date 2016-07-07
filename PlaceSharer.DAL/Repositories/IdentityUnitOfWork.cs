@@ -15,6 +15,8 @@ namespace PlaceSharer.DAL.Repositories
         private ApplicationUserManager userManager;
         private ApplicationRoleManager roleManager;
         private IClientManager clientManager;
+        private IPlaceManager placeManager;
+        private ILocationManager locationManager;
 
         public IdentityUnitOfWork(string connectionString)
         {
@@ -22,6 +24,8 @@ namespace PlaceSharer.DAL.Repositories
             userManager = new ApplicationUserManager(new UserStore<ApplicationUser>(database));
             roleManager = new ApplicationRoleManager(new RoleStore<ApplicationRole>(database));
             clientManager = new ClientManager(database);
+            placeManager = new PlaceManager(database);
+            locationManager = new LocationManager(database);
         }
 
         public IClientManager ClientManager
@@ -45,6 +49,22 @@ namespace PlaceSharer.DAL.Repositories
             get
             {
                 return userManager;
+            }
+        }
+
+        public IPlaceManager PlaceManager
+        {
+            get
+            {
+                return placeManager;
+            }
+        }
+
+        public ILocationManager LocationManager
+        {
+            get
+            {
+                return locationManager;
             }
         }
 

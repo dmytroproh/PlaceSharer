@@ -40,7 +40,7 @@ namespace PlaceSharer.WEB.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(LoginModel model)
         {
-            await SetInitialData();
+            //await SetInitialData();
             if (ModelState.IsValid)
             {
                 UserDTO userDto = new UserDTO { Email = model.Email, Password = model.Password };
@@ -79,7 +79,7 @@ namespace PlaceSharer.WEB.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Registration(RegistrationModel model)
         {
-            await SetInitialData();
+            //await SetInitialData();
 
             if (ModelState.IsValid)
             {
@@ -90,10 +90,10 @@ namespace PlaceSharer.WEB.Controllers
                     UserName = model.UserName,
                     Name = model.Name,
                     LastName = model.LastName,
-                    Role = "User"
+                    Role = "user"
                 };
 
-                OperationDetails operationDetails = await UserService.Create(userDto);
+                OperationDetails operationDetails = await UserService.CreateAsync(userDto);
                 if (operationDetails.Succedeed)
                     return View("SuccessRegister");
                 else
@@ -109,10 +109,10 @@ namespace PlaceSharer.WEB.Controllers
                 Email = "kolya.kr95@gmail.com",
                 Name = "Nick",
                 LastName = "Kravch",
-                Password = "abc123",
+                Password = "abc123456",
                 UserName = "enot",
-                Role = "Admin"
-            }, new List<string> { "User", "Admin" });
+                Role = "admin"
+            }, new List<string> { "user", "admin" });
         }
     }
 }
