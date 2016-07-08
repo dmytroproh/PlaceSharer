@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - PlaceSharer</title>
+    @Styles.Render("~/Content/Site.css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>  
+    
+    <div id="main_menu">
+        <ul id="navigation">.
+<<<<<<< HEAD
+            <li>@Html.ActionLink(@Resources.Resource.Home, "Index", "Home")</li>
+            <li>@Html.ActionLink(@Resources.Resource.Friends, "About", "Home")</li>
+            <li>@Html.ActionLink(@Resources.Resource.Account, "Contact", "Home")</li>
+=======
+            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+            <li>@Html.ActionLink("Friends", "Index", "Home")</li>
+            <li>@Html.ActionLink("Account", "Index", "Place")</li>
+>>>>>>> 0b6440bc5dda07e626a85ffa9d7c653f9e0b229f
+        </ul>
+        <ul id="navigation">
+            
+            <li>@Html.ActionLink("en/rus", "Contact", "Home")</li>
+           
+        </ul>
+        <div id="searchbar">
+            <form id="searchform">
+                <input type="text" name="search" />
+                <input type="submit" value="" />
+            </form>
+        </div>
+
+            <ul id="navigation">
+        @{
+            if (!User.Identity.IsAuthenticated)
+            {
+              
+                <li>@Html.ActionLink("Log In", "Login", "Account")</li>
+                <li>@Html.ActionLink("Register", "Registration", "Account")</li>
+            }
+            else
+            {
+                <li>@Html.ActionLink("Settings", "Index", "Manage")</li>
+                <li>@Html.ActionLink("Log out", "Logout", "Account")</li>
+            }
+        }
+            </ul>
+        </div>
+   
+  <div>
+    @RenderBody() 
+  </div>
+    <div class="container body-content">
+        
+        <hr />
+        <div id="footermainPan">
+            <div id="footerPan">
+                <ul>
+                    <li><a href="index.html">About system</a>| </li>
+                    <li><a href="#">Privacy Policy</a>| </li>
+                    <li><a href="#"> © 2016 PlaceSharer. All right reserved.</a></li>
+                  
+                </ul>
+              
+            </div>
+        </div>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
