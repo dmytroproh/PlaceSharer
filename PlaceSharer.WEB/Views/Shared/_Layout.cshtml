@@ -8,16 +8,17 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>  
-
+    
     <div id="main_menu">
         <ul id="navigation">.
-            <li>@Html.ActionLink("Home", "Index", "Home")</li>
-            <li>@Html.ActionLink("Friends", "About", "Home")</li>
-            <li>@Html.ActionLink("Account", "Contact", "Home")</li>
+            <li>@Html.ActionLink(@Resources.Resource.Home, "Index", "Home")</li>
+            <li>@Html.ActionLink(@Resources.Resource.Friends, "About", "Home")</li>
+            <li>@Html.ActionLink(@Resources.Resource.Account, "Contact", "Home")</li>
         </ul>
         <ul id="navigation">
+            
             <li>@Html.ActionLink("en/rus", "Contact", "Home")</li>
-
+           
         </ul>
         <div id="searchbar">
             <form id="searchform">
@@ -25,12 +26,23 @@
                 <input type="submit" value="" />
             </form>
         </div>
-        <ul id="navigation">
-            <li>@Html.ActionLink("Log In", "Login", "Account")</li>
-            <li>@Html.ActionLink("Register", "Registration", "Account")</li>
-        </ul>
-        
-    </div>
+
+            <ul id="navigation">
+        @{
+            if (!User.Identity.IsAuthenticated)
+            {
+              
+                <li>@Html.ActionLink("Log In", "Login", "Account")</li>
+                <li>@Html.ActionLink("Register", "Registration", "Account")</li>
+            }
+            else
+            {
+                <li>@Html.ActionLink("Settings", "Index", "Manage")</li>
+                <li>@Html.ActionLink("Log out", "Logout", "Account")</li>
+            }
+        }
+            </ul>
+        </div>
    
   <div>
     @RenderBody() 

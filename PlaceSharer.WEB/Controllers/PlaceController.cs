@@ -6,9 +6,9 @@ using System.Web.Mvc;
 
 namespace PlaceSharer.WEB.Controllers
 {
+    [Authorize]
     public class PlaceController : Controller
     {
-       
         public ActionResult Index()
         {
             return View();
