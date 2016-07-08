@@ -16,7 +16,7 @@ namespace PlaceSharer.WEB.Controllers
     [Authorize]
     public class ManageController : Controller
     {
-
+        
         private IUserService UserService
         {
             get
