@@ -16,6 +16,7 @@ namespace PlaceSharer.DAL.Repositories
         public void Create(ClientProfile item)
         {
             Database.ClientProfiles.Add(item);
+            Database.SaveChanges();
         }
 
         public void Dispose()

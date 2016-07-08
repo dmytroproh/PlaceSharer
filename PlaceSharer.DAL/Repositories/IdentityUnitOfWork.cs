@@ -21,6 +21,7 @@ namespace PlaceSharer.DAL.Repositories
         public IdentityUnitOfWork(string connectionString)
         {
             database = new ApplicationContext(connectionString);
+
             userManager = new ApplicationUserManager(new UserStore<ApplicationUser>(database));
             roleManager = new ApplicationRoleManager(new RoleStore<ApplicationRole>(database));
             clientManager = new ClientManager(database);

@@ -11,9 +11,15 @@
     
     <div id="main_menu">
         <ul id="navigation">.
+<<<<<<< HEAD
             <li>@Html.ActionLink(@Resources.Resource.Home, "Index", "Home")</li>
             <li>@Html.ActionLink(@Resources.Resource.Friends, "About", "Home")</li>
             <li>@Html.ActionLink(@Resources.Resource.Account, "Contact", "Home")</li>
+=======
+            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+            <li>@Html.ActionLink("Friends", "Index", "Home")</li>
+            <li>@Html.ActionLink("Account", "Index", "Place")</li>
+>>>>>>> 0b6440bc5dda07e626a85ffa9d7c653f9e0b229f
         </ul>
         <ul id="navigation">
             

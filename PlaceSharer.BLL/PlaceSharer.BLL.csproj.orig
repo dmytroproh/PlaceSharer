@@ -58,7 +58,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DTO\ChangePasswordDTO.cs" />
+<<<<<<< HEAD
     <Compile Include="DTO\PlaceDTO.cs" />
+=======
+    <Compile Include="DTO\LocationDTO.cs" />
+>>>>>>> 0b6440bc5dda07e626a85ffa9d7c653f9e0b229f
     <Compile Include="DTO\UserDTO.cs" />
     <Compile Include="Infrastructure\OperationDetails.cs" />
     <Compile Include="Interfaces\IServiceCreator.cs" />

@@ -36,8 +36,14 @@ namespace PlaceSharer.BLL.Services
             if(user == null)
             {
                 user = new ApplicationUser { Email = userDto.Email, UserName = userDto.Email };
-                await Database.UserManager.CreateAsync(user, userDto.Password);
-                await Database.UserManager.AddToRoleAsync(user.Id, userDto.Role);
+                var result = await Database.UserManager.CreateAsync(user, userDto.Password);
+                if (result.Succeeded)
+                {
+                    await Database.UserManager.AddToRoleAsync(user.Id, userDto.Role);
+
+                    var code = Database.UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                    //var callBackUrl = Ur
+                }
                 ClientProfile clientProfile = new ClientProfile
                 {
                     Id = user.Id,
