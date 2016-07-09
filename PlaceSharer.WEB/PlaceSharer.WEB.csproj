@@ -214,6 +214,7 @@
     <Content Include="Views\Manage\ChangePassword.cshtml" />
     <Content Include="Views\Friend\Index.cshtml" />
     <Content Include="Views\Place\Index.cshtml" />
+    <Content Include="Views\Place\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
