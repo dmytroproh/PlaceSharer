@@ -18,7 +18,11 @@
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
+<<<<<<< HEAD
     <IISExpressSSLPort>44316</IISExpressSSLPort>
+=======
+    <IISExpressSSLPort>44314</IISExpressSSLPort>
+>>>>>>> 198b8ee27e74b6e7ad962173686ccabeccb6af1b
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -239,7 +243,6 @@
       <LastGenOutput>Resource.Designer.cs</LastGenOutput>
       <CustomToolNamespace>Resources</CustomToolNamespace>
     </EmbeddedResource>
-    <Content Include="App_LocalResources\Resource.ru.resx" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -259,7 +262,11 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>54278</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
+<<<<<<< HEAD
           <IISUrl>https://localhost:44316/</IISUrl>
+=======
+          <IISUrl>https://localhost:44314/</IISUrl>
+>>>>>>> 198b8ee27e74b6e7ad962173686ccabeccb6af1b
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

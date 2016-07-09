@@ -22,6 +22,12 @@ namespace PlaceSharer.WEB.Controllers
         {
             return View();
         }
+
+        public ActionResult Create()
+        {
+            return View();
+        }
+
         public JsonResult GetData()
         {
             

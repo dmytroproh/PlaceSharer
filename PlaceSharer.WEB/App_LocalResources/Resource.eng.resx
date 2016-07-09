@@ -118,12 +118,12 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Account" xml:space="preserve">
-    <value>Аккаунт</value>
+    <value>Account</value>
   </data>
   <data name="Friends" xml:space="preserve">
-    <value>Друзья</value>
+    <value>Friends</value>
   </data>
   <data name="Home" xml:space="preserve">
-    <value>Главная</value>
+    <value>Home</value>
   </data>
 </root>
