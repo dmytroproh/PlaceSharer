@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PlaceSharer.BLL.DTO
 {
-    class PlaceDTO
+    public class PlaceDTO
     {
         public string Id { get; set; }
         public string Name { get; set; }
