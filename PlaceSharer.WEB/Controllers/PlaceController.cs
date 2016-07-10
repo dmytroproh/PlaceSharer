@@ -15,7 +15,7 @@ using PlaceSharer.WEB.Models;
 
 namespace PlaceSharer.WEB.Controllers
 {
-    [Authorize]
+   // [Authorize]
     public class PlaceController : Controller
     {
         public ActionResult Index()

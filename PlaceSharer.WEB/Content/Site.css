@@ -44,12 +44,8 @@
         font-size: 12px;
     }
     #center {
-	top: 25%; 
-	left: 40%;
-    position:relative;
-    margin-top: 100px;
-    margin-bottom: 100px;
-}
+	
+   }
 #main_menu {
 min-width: 100%;
 float: left;
@@ -78,7 +74,7 @@ list-style: none;
 margin: 0;
 padding: 0;
 float: left;
-margin-left: 80px;
+margin-left: 1px;
 border-left: 1px solid #333;
 
 }
@@ -168,5 +164,4 @@ background: #999 url(search.png) no-repeat center center;
 -webkit-border-radius: 0px 5px 5px 0px;
 border-radius: 0px 5px 5px 0px;
 }
-
 
