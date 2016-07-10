@@ -72,12 +72,7 @@
 
         var myLatlng = new google.maps.LatLng(55.752622, 37.617567);
 
-        //var marker = new google.maps.Marker({
-        //    position: myLatlng,
-        //    draggable: true,
-        //    map: map,
-        //    title: 'Станции метро'
-        //});
+      
 
 
         //marker.setIcon('http://maps.google.com/mapfiles/ms/icons/red-dot.png')
@@ -90,6 +85,7 @@
                     'position': new google.maps.LatLng(item.GeoLong, item.GeoLat),
                     'map': map,
                      draggable: true,
+                     editable: true,
                     'title': item.PlaceName
                 });
 
@@ -99,8 +95,14 @@
               
 
                 google.maps.event.addListener(marker, 'click', function () {
+                   
+                    
                     infowindow.open(map, marker);
                 });
+                 var infowindow = new google.maps.InfoWindow({
+                     content: "<div class='stationInfo'><h2>Координаты " + marker.getPosition()+"</h2></div>" });
+
+                
             })
         });
     }
