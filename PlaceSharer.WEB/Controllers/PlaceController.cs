@@ -18,6 +18,31 @@ namespace PlaceSharer.WEB.Controllers
     [Authorize]
     public class PlaceController : Controller
     {
+
+        private IUserService UserService
+        {
+            get
+            {
+                return HttpContext.GetOwinContext().GetUserManager<IUserService>();
+            }
+        }
+
+        private IPlaceService PlaceService
+        {
+            get
+            {
+                return HttpContext.GetOwinContext().Get<IPlaceService>();
+            }
+        }
+
+        private IAuthenticationManager AuthenticationManager
+        {
+            get
+            {
+                return HttpContext.GetOwinContext().Authentication;
+            }
+        }
+
         public ActionResult Index()
         {
             return View();
@@ -25,6 +50,28 @@ namespace PlaceSharer.WEB.Controllers
 
         public ActionResult Create()
         {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Create(UserPlaceViewModel model)
+        {
+            if(ModelState.IsValid)
+            {
+                PlaceDTO place = new PlaceDTO
+                {
+                    Name = model.Name,
+                    Description = model.Description,
+                    GeoLat = model.GeoLat,
+                    GeoLong = model.GeoLong,
+                    UserId = User.Identity.GetUserId()
+                };
+            OperationDetails operationDetails = await PlaceService.CreateAsync(place);
+                if (operationDetails.Succedeed)
+                    return RedirectToAction("Index", "Place");
+                else
+                    ModelState.AddModelError(operationDetails.Property, operationDetails.Message);
+            }
             return View();
         }
 

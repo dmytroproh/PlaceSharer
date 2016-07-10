@@ -11,8 +11,7 @@
         @using (Html.BeginForm())
         {
             @Html.ValidationSummary()
-
-
+            
             <div>
                 @Html.LabelFor(model => model.Name)
                 @Html.EditorFor(model => model.Name)
@@ -25,16 +24,27 @@
                 @Html.ValidationMessageFor(model => model.Description)
             </div>
 
-         
+            <div>
+                @Html.LabelFor(model => model.GeoLat)
+                @Html.EditorFor(model => model.GeoLat)
+                @Html.ValidationMessageFor(model => model.GeoLat)
+            </div>
+
+            <div>
+                @Html.LabelFor(model => model.GeoLong)
+                @Html.EditorFor(model => model.GeoLong)
+                @Html.ValidationMessageFor(model => model.GeoLong)
+            </div>
 
             <div>
                 <br />
-                <input type="submit" value="Create Account" id="create-account" class="button" />
+                <input type="submit" value="Create Place" id="create-account" class="button" />
             </div>
         }
    
        </div>
 </div>
+
 <script src="https://maps.google.com/maps/api/js?key=AIzaSyAf8q-0gl4zbuqzUd48OVK6kS-RFFcZneg" type="text/javascript"></script>
 
 <style>

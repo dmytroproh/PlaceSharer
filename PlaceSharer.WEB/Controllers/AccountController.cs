@@ -92,7 +92,7 @@ namespace PlaceSharer.WEB.Controllers
                     LastName = model.LastName,
                     Role = "user"
                 };
-
+                
                 OperationDetails operationDetails = await UserService.CreateAsync(userDto);
                 if (operationDetails.Succedeed)
                     return View("SuccessRegister");

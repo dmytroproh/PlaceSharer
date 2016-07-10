@@ -39,13 +39,19 @@ namespace PlaceSharer.BLL.Services
                     GeoLong = placeDto.GeoLong
                 };
 
-                currentUser.Places.Add(place);
-                //Place
+                //currentUser.Places.Add(place);
+                Database.PlaceManager.Create(place);
+                Database.LocationManager.Create(location);
 
-                //await Database.SaveAsync();
+                await Database.SaveAsync();
                 return new OperationDetails(true, "Place added", "");
             }
             return new OperationDetails(false, "User with this Id already exists", "Id");
+        }
+
+        public void Dispose()
+        {
+            Database.Dispose();
         }
     }
 }
