@@ -3,5 +3,7 @@
     public interface IServiceCreator
     {
         IUserService CreateUserService(string connection);
+
+        IPlaceService CreatePlaceService(string connection);
     }
 }

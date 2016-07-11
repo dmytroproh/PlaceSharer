@@ -12,8 +12,6 @@
         {
             @Html.ValidationSummary()
             
-
-
             <div>
                 @Html.LabelFor(model => model.Name)
                 @Html.EditorFor(model => model.Name)
@@ -46,7 +44,11 @@
    
        </div>
 </div>
+<<<<<<< HEAD
+
+=======
 }
+>>>>>>> e454b3156ef14d9c91d1a3f96098ded12c8686c9
 <script src="https://maps.google.com/maps/api/js?key=AIzaSyAf8q-0gl4zbuqzUd48OVK6kS-RFFcZneg" type="text/javascript"></script>
 
 <style>

@@ -41,8 +41,15 @@ namespace PlaceSharer.BLL.Services
                 {
                     await Database.UserManager.AddToRoleAsync(user.Id, userDto.Role);
 
-                    var code = Database.UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    //var callBackUrl = Ur
+                    var confToken = Database.UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                    //var callBackUrl = Url.
+
+                    //await Database.UserManager.SendEmailAsync(
+                    //    user.Id,
+                    //    "Confirm Email for Login in PlaceSharer",
+                    //    "To complete the registration please go to: <a href=\"" +
+                    //    +callBackUrl + "\">Complete registration</a>"
+                    //    );
                 }
                 ClientProfile clientProfile = new ClientProfile
                 {

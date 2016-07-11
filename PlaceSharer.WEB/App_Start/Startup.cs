@@ -17,6 +17,8 @@ namespace PlaceSharer.WEB.App_Start
         public void Configuration(IAppBuilder app)
         {
             app.CreatePerOwinContext<IUserService>(CreateUserService);
+            app.CreatePerOwinContext<IPlaceService>(CreatePlaceService);
+
             app.UseCookieAuthentication(new CookieAuthenticationOptions
             {
                 AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
@@ -27,6 +29,11 @@ namespace PlaceSharer.WEB.App_Start
         private IUserService CreateUserService()
         {
             return serviceCreator.CreateUserService("DefaultConnection");
+        }
+
+        private IPlaceService CreatePlaceService()
+        {
+            return serviceCreator.CreatePlaceService("DefaultConnection");
         }
     }
 }

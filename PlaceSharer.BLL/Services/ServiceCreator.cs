@@ -10,5 +10,10 @@ namespace PlaceSharer.BLL.Services
         {
             return new UserService(new IdentityUnitOfWork(connection));
         }
+
+        public IPlaceService CreatePlaceService(string connection)
+        {
+            return new PlaceService(new IdentityUnitOfWork(connection));
+        }
     }
 }

@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace PlaceSharer.WEB.Controllers
 {
+    [Authorize]
     public class FriendController : Controller
     {
        
