@@ -1,5 +1,6 @@
 ﻿using System.Web;
 using System.Web.Mvc;
+using PlaceSharer.WEB.Filters;
 
 namespace PlaceSharer.WEB
 {
@@ -8,6 +9,7 @@ namespace PlaceSharer.WEB
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new HandleErrorAttribute());
+            filters.Add(new CultureAttribute());
         }
     }
 }

@@ -10,11 +10,12 @@ namespace PlaceSharer.DAL.Entities
         public string Name { get; set; }
         public string Description { get; set; }
 
+        public double GeoLong { get; set; }
+        public double GeoLat { get; set; }
+
         public string UserId { get; set; }
         public ApplicationUser User { get; set; }
-
-        public virtual Location Location { get; set; }
-
+        
         public Place()
         {
             Id = Guid.NewGuid().ToString();

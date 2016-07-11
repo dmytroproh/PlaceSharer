@@ -10,7 +10,8 @@ namespace PlaceSharer.BLL.Interfaces
     public interface IPlaceService : IDisposable
     {
         Task<OperationDetails> CreateAsync(PlaceDTO placeDto);
-
+        //Task<PlaceDTO> GetPlace(string id);
+        IEnumerable<PlaceDTO> GetPlacesByUserId(string UserId);
 
     }
 }

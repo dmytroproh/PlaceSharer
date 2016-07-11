@@ -14,9 +14,8 @@ namespace PlaceSharer.DAL.Repositories
 
         private ApplicationUserManager userManager;
         private ApplicationRoleManager roleManager;
-        private IClientManager clientManager;
-        private IPlaceManager placeManager;
-        private ILocationManager locationManager;
+        private ClientManager clientManager;
+        private PlaceManager placeManager;
 
         public IdentityUnitOfWork(string connectionString)
         {
@@ -26,10 +25,9 @@ namespace PlaceSharer.DAL.Repositories
             roleManager = new ApplicationRoleManager(new RoleStore<ApplicationRole>(database));
             clientManager = new ClientManager(database);
             placeManager = new PlaceManager(database);
-            locationManager = new LocationManager(database);
         }
 
-        public IClientManager ClientManager
+        public IRepository<ClientProfile> ClientManager
         {
             get
             {
@@ -53,7 +51,7 @@ namespace PlaceSharer.DAL.Repositories
             }
         }
 
-        public IPlaceManager PlaceManager
+        public IRepository<Place> PlaceManager
         {
             get
             {
@@ -61,14 +59,7 @@ namespace PlaceSharer.DAL.Repositories
             }
         }
 
-        public ILocationManager LocationManager
-        {
-            get
-            {
-                return locationManager;
-            }
-        }
-
+   
         public async Task SaveAsync()
         {
             await database.SaveChangesAsync();
@@ -90,6 +81,7 @@ namespace PlaceSharer.DAL.Repositories
                     userManager.Dispose();
                     roleManager.Dispose();
                     clientManager.Dispose();
+                    placeManager.Dispose();
                 }
                 this.disposed = true;
             }

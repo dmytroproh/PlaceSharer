@@ -118,30 +118,30 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AboutSystem" xml:space="preserve">
-    <value>About System</value>
+    <value>Про систему</value>
   </data>
   <data name="Account" xml:space="preserve">
-    <value>Account</value>
+    <value>Аккаунт</value>
   </data>
   <data name="Friends" xml:space="preserve">
-    <value>Friends</value>
+    <value>Друзья</value>
   </data>
   <data name="Home" xml:space="preserve">
-    <value>Home</value>
+    <value>Главная</value>
   </data>
   <data name="Logout" xml:space="preserve">
-    <value>Log Out</value>
+    <value>Выход</value>
   </data>
   <data name="PrivacyPolicy" xml:space="preserve">
-    <value>Privacy Policy</value>
+    <value>Политика конфиденциальности</value>
   </data>
   <data name="Settings" xml:space="preserve">
-    <value>Settings</value>
+    <value>Настройки</value>
   </data>
   <data name="SignIn" xml:space="preserve">
-    <value>Sign In</value>
+    <value>Вход</value>
   </data>
   <data name="SignUp" xml:space="preserve">
-    <value>Sign Up</value>
+    <value>Регистрация</value>
   </data>
 </root>

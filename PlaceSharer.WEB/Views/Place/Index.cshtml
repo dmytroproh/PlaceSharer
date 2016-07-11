@@ -1,5 +1,18 @@
-﻿@{
+﻿@using PlaceSharer.WEB.Models
+@{
     ViewBag.Title = "Home Page";
+}
+
+@foreach(UserPlaceViewModel item in ViewBag.Places)
+{
+    @item.Name
+    <br />
+    @item.Description
+    <br />
+    <p>Lat: @item.GeoLat</p>
+    <br />
+    <p>Long: @item.GeoLong</p>
+    <br />
 }
 
 <script src="http://maps.google.com/maps/api/js?key=AIzaSyAf8q-0gl4zbuqzUd48OVK6kS-RFFcZneg&callback=initMap" type="text/javascript"></script>
@@ -55,7 +68,7 @@
                 var marker = new google.maps.Marker({
                     'position': new google.maps.LatLng(item.GeoLong, item.GeoLat),
                     'map': map,
-                    'title': item.PlaceName
+                    'title': item.Name
                 });
 
           

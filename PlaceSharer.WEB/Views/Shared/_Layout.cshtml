@@ -16,8 +16,16 @@
             <li>@Html.ActionLink(@Resources.Resource.Account, "Index", "Place")</li>
         </ul>
         <ul id="navigation">
-            
-            <li>@Html.ActionLink("en/rus", "Contact", "Home")</li>
+            @{ 
+                if (HttpContext.Current.Request.Cookies["lang"] != null && HttpContext.Current.Request.Cookies["lang"].Value == "ru")
+                {
+                  <li>@Html.ActionLink("English", "ChangeCulture", "Home", new { lang = "en" }, null)</li>
+                }
+                else
+                {
+                  <li>@Html.ActionLink("Русский", "ChangeCulture", "Home", new { lang = "ru" }, null)</li>
+                }
+             }
            
         </ul>
         <div id="searchbar" >
@@ -32,13 +40,13 @@
             if (!User.Identity.IsAuthenticated)
             {
               
-                <li>@Html.ActionLink("Log In", "Login", "Account")</li>
-                <li>@Html.ActionLink("Register", "Registration", "Account")</li>
+                <li>@Html.ActionLink(@Resources.Resource.SignIn, "Login", "Account")</li>
+                <li>@Html.ActionLink(@Resources.Resource.SignUp, "Registration", "Account")</li>
             }
             else
             {
-                <li>@Html.ActionLink("Settings", "Index", "Manage")</li>
-                <li>@Html.ActionLink("Log out", "Logout", "Account")</li>
+                <li>@Html.ActionLink(@Resources.Resource.Settings, "Index", "Manage")</li>
+                <li>@Html.ActionLink(@Resources.Resource.Logout, "Logout", "Account")</li>
             }
         }
             </ul>
@@ -54,8 +62,8 @@
         <div id="footermainPan">
             <div id="footerPan">
                 <ul>
-                    <li><a href="index.html">About system</a>| </li>
-                    <li><a href="#">Privacy Policy</a>| </li>
+                    <li><a href="index.html">@Resources.Resource.AboutSystem</a>| </li>
+                    <li><a href="#">@Resources.Resource.PrivacyPolicy</a>| </li>
                     <li><a href="#"> © 2016 PlaceSharer. All right reserved.</a></li>
                   
                 </ul>

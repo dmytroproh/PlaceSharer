@@ -6,7 +6,7 @@ using PlaceSharer.DAL.Entities;
 
 namespace PlaceSharer.DAL.EF
 {
-    public class DbInitializer : DropCreateDatabaseAlways<ApplicationContext>
+    public class PlaceSharerDbInitializer : DropCreateDatabaseAlways<ApplicationContext>
     {
         protected override void Seed(ApplicationContext context)
         {
