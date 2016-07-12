@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 
 
-namespace PlaceSharer.BLL.Services
+namespace PlaceSharer.DAL.Services
 {
     class EmailService : IIdentityMessageService
     {

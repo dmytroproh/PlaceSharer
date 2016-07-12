@@ -29,7 +29,7 @@ namespace PlaceSharer.BLL.Services
             return claim;
         }
 
-        public async Task<OperationDetails> CreateAsync(UserDTO userDto)
+        public async Task<OperationDetails> CreateAsync(UserDTO userDto, string pathForConfirmEmail)
         {
             ApplicationUser user = await Database.UserManager.FindByEmailAsync(userDto.Email);
 
@@ -40,16 +40,8 @@ namespace PlaceSharer.BLL.Services
                 if (result.Succeeded)
                 {
                     await Database.UserManager.AddToRoleAsync(user.Id, userDto.Role);
-
-                    var confToken = Database.UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    //var callBackUrl = Url.
-
-                    //await Database.UserManager.SendEmailAsync(
-                    //    user.Id,
-                    //    "Confirm Email for Login in PlaceSharer",
-                    //    "To complete the registration please go to: <a href=\"" +
-                    //    +callBackUrl + "\">Complete registration</a>"
-                    //    );
+                    
+                    await SendEmailForConfirmEmail(user.Id, pathForConfirmEmail);
                 }
                 ClientProfile clientProfile = new ClientProfile
                 {
@@ -71,7 +63,7 @@ namespace PlaceSharer.BLL.Services
         public async Task<OperationDetails> ChangePasswordAsync(ChangePasswordDTO cpDto)
         {
             var result = await Database.UserManager.ChangePasswordAsync(cpDto.UserId, cpDto.OldPassword, cpDto.NewPassword);
-            if(result.Succeeded)
+            if (result.Succeeded)
             {
                 await Database.SaveAsync();
                 return new OperationDetails(true, "Password Changed", "");
@@ -80,9 +72,20 @@ namespace PlaceSharer.BLL.Services
             {
                 return new OperationDetails(false, "Password wasn`t changed", "");
             }
-            
         }
 
+        public async Task<OperationDetails> ConfirmEmailAsync(string userId, string confirmCode)
+        {
+            var user = await Database.UserManager.FindByIdAsync(userId);
+            if (user == null)
+                return new OperationDetails(false, "User with currently Id not exist", "Id");
+            var confirmResult = await Database.UserManager.ConfirmEmailAsync(userId, confirmCode);
+            if (!confirmResult.Succeeded)
+                return new OperationDetails(false, "Email has not been confirmed", "");
+            else
+                return new OperationDetails(true, "Email was confirmed", "");
+
+        }
 
         public async Task SetInitialData(UserDTO adminDto, List<string> roles)
         {
@@ -95,12 +98,23 @@ namespace PlaceSharer.BLL.Services
                     await Database.RoleManager.CreateAsync(role);
                 }
             }
-            await CreateAsync(adminDto);
+            await CreateAsync(adminDto, "");
         }
 
         public void Dispose()
         {
             Database.Dispose();
+        }
+
+        private async Task SendEmailForConfirmEmail(string userId, string onePartOfConfirmLink)
+        {
+            var confToken = await Database.UserManager.GenerateEmailConfirmationTokenAsync(userId);
+            var callbackUrl = onePartOfConfirmLink + "?" + "userId=" + userId + "&code=" + confToken;
+
+            await Database.UserManager.SendEmailAsync(userId,
+                "Confirmation e-mail",
+                "To complete the registration please go to: <a href=\""
+                + callbackUrl + "\">to complete registration!</a>");
         }
     }
 }

@@ -11,9 +11,7 @@
         @using (Html.BeginForm())
         {
             @Html.ValidationSummary()
-            
-
-
+        
             <div>
                 @Html.LabelFor(model => model.Name)
                 @Html.EditorFor(model => model.Name)
@@ -46,7 +44,7 @@
    
        </div>
 </div>
-}
+
 <script src="https://maps.google.com/maps/api/js?key=AIzaSyAf8q-0gl4zbuqzUd48OVK6kS-RFFcZneg" type="text/javascript"></script>
 
 <style>
@@ -118,5 +116,4 @@
         });
     }
     </script>
-}
 }
