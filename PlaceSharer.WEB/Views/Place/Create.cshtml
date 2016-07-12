@@ -6,42 +6,45 @@
 
 <div class="main">
 
-    <div id="center">
-        <h3>Create place</h3>
-        @using (Html.BeginForm())
+    <div >
+        <h3 style="margin-left:25%" >Create place</h3>
+        @using (Html.BeginForm(Html.BeginForm("Create", "Place",
+            new { ReturnUrl = ViewBag.ReturnUrl },
+            FormMethod.Post, new { @class = "contact_form" })))
         {
             @Html.ValidationSummary()
-            
 
 
-            <div>
-                @Html.LabelFor(model => model.Name)
-                @Html.EditorFor(model => model.Name)
-                @Html.ValidationMessageFor(model => model.Name)
-            </div>
+            <ul>
+                <li>
+                    @Html.LabelFor(model => model.Name)
+                    @Html.EditorFor(model => model.Name)
+                    @Html.ValidationMessageFor(model => model.Name)
+                </li>
 
-            <div>
-                @Html.LabelFor(model => model.Description)
-                @Html.EditorFor(model => model.Description)
-                @Html.ValidationMessageFor(model => model.Description)
-            </div>
+                <li>
+                    @Html.LabelFor(model => model.Description)
+                    @Html.EditorFor(model => model.Description)
+                    @Html.ValidationMessageFor(model => model.Description)
+                </li>
 
-            <div>
-                @Html.LabelFor(model => model.GeoLat)
-                @Html.EditorFor(model => model.GeoLat)
-                @Html.ValidationMessageFor(model => model.GeoLat)
-            </div>
+                <li>
+                    @Html.LabelFor(model => model.GeoLat)
+                    @Html.EditorFor(model => model.GeoLat)
+                    @Html.ValidationMessageFor(model => model.GeoLat)
+                </li>
 
-            <div>
-                @Html.LabelFor(model => model.GeoLong)
-                @Html.EditorFor(model => model.GeoLong)
-                @Html.ValidationMessageFor(model => model.GeoLong)
-            </div>
+                <li>
+                    @Html.LabelFor(model => model.GeoLong)
+                    @Html.EditorFor(model => model.GeoLong)
+                    @Html.ValidationMessageFor(model => model.GeoLong)
+                </li>
 
-            <div>
-                <br />
-                <input type="submit" value="Create Place" id="create-account" class="button" />
-            </div>
+                <li>
+                   
+                    <button class="submit" type="submit" value="Create Place" id="create-account">Create</button>
+                </li>
+            </ul>
         }
    
        </div>

@@ -4,39 +4,41 @@
     ViewBag.Title = "Log In";
 }
 <div class="main">
-    <div id="center">
-        <div class="Log In">
-            <h3>Log In</h3>
+    <div>
+        <div>
+            <h3 style="margin-left:25%"; font-weight: normal>Log In</h3>
             
-            @using (Html.BeginForm())
+            @using (Html.BeginForm("Login", "Account",
+            new { ReturnUrl = ViewBag.ReturnUrl },
+            FormMethod.Post, new { @class = "contact_form" }))
             {
                 @Html.AntiForgeryToken()
 
-                <h4>Login model</h4>
-
                 @Html.ValidationSummary(true,"")
-
+                <ul>
+                   <li>
                 @Html.LabelFor(model => model.Email)
                 @Html.EditorFor(model => model.Email)
                 @Html.ValidationMessageFor(model => model.Email)
-                <br />
+                   </li>
+                    <li>
                 @Html.LabelFor(model => model.Password)
                 @Html.EditorFor(model => model.Password)
                 @Html.ValidationMessageFor(model => model.Password)
-                <br />
-                <input type="submit" value="Log in" />
+                    </li>
+                    <li>
+                        <button class="submit" type="submit" value="Create Account" id="create-account">Log In</button>
+                    </li>
+                    <li id="sn_buttons">
+                        <button class="fb_button" type="submit">Facebook</button>
+                        <button class="google_button" type="submit">google</button>
+                    </li>
+                </ul>
+               
             }
 
-            <div class="social-buttons facebook">
-                <a href="#">
-                    <span>Facebook</span>
-                </a>
-            </div>
-            <div class="social-buttons twitter">
-                <a href="#">
-                    <span>Twitter</span>
-                </a>
-            </div>
+           
+            
         </div>
     </div>
 </div>
