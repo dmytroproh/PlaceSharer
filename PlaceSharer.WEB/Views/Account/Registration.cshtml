@@ -6,68 +6,62 @@
 
 <div class="main">
 
-    <div id="center">
-        <h3>Registration</h3>
-        @using (Html.BeginForm())
+    <div >
+        <h3 style="margin-left:25%"; font-weight: normal>Registration</h3>
+        @using (Html.BeginForm("Registration", "Account",
+                new { ReturnUrl = ViewBag.ReturnUrl },
+                FormMethod.Post, new { @class = "contact_form" }))
         {
+
             @Html.AntiForgeryToken()
 
             @Html.ValidationSummary()
 
-            
-            <div>
+            <ul>
+            <li>
                 @Html.LabelFor(model => model.Name)
                 @Html.EditorFor(model => model.Name)
                 @Html.ValidationMessageFor(model => model.Name)
-            </div>
+            </li>
 
-            <div>
+            <li>
                 @Html.LabelFor(model => model.LastName)
                 @Html.EditorFor(model => model.LastName)
                 @Html.ValidationMessageFor(model => model.LastName)
-            </div>
+            </li>
 
-            <div>
+            <li>
                 @Html.LabelFor(model => model.Email)
                 @Html.EditorFor(model => model.Email)
                 @Html.ValidationMessageFor(model => model.Email)
-            </div>
+            </li>
 
-            <div>
+            <li>
                 @Html.LabelFor(model => model.UserName)
                 @Html.EditorFor(model => model.UserName)
                 @Html.ValidationMessageFor(model => model.UserName)
-            </div>
-            <div>
+            </li>
+            <li>
                 @Html.LabelFor(model => model.Password)
                 @Html.EditorFor(model => model.Password)
                 @Html.ValidationMessageFor(model => model.Password)
-            </div>
+            </li>
 
-            <div>
+            <li>
                 @Html.LabelFor(model => model.ConfirmPassword)
                 @Html.EditorFor(model => model.ConfirmPassword)
                 @Html.ValidationMessageFor(model => model.ConfirmPassword)
-            </div>
-            <div>
-                <br />
-                <input type="submit" value="Create Account" id="create-account" class="button" />
-            </div>
+            </li>
+            <li>
+                <button class="submit" type="submit" value="Create Account" id="create-account">Log In</button>
+            </li>
+            <li id="sn_buttons">
+                    <button class="fb_button" type="submit">Facebook</button>
+                    <button class="google_button" type="submit">google</button>
+            </li>
+                </ul>
         }
-        <div class="sep">
-            <span class="or">OR</span>
-        </div>
-        <div class="connect">
-            <div class="social-buttons facebook">
-                <a href="#">
-                    <span>Facebook</span>
-                </a>
-            </div>
-            <div class="social-buttons twitter">
-                <a href="#">
-                    <span>Twitter</span>
-                </a>
-            </div>
-        </div>
+        
+        
     </div>
 </div>

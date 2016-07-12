@@ -11,7 +11,7 @@ namespace PlaceSharer.DAL.EF
 
         static ApplicationContext()
         {
-            // Database.SetInitializer(new PlaceSharerDbInitializer());
+            //Database.SetInitializer(new PlaceSharerDbInitializer());
         }
 
         public DbSet<ClientProfile> ClientProfiles { get; set; }
