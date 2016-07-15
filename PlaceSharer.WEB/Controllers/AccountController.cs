@@ -92,14 +92,30 @@ namespace PlaceSharer.WEB.Controllers
                     LastName = model.LastName,
                     Role = "user"
                 };
-                
-                OperationDetails operationDetails = await UserService.CreateAsync(userDto);
+
+                // Используется для передачи токена подтверждения Эл.Почты
+                string PathForConfirmEmail = Url.Action("ConfirmEmail", "Account");
+
+                OperationDetails operationDetails = await UserService.CreateAsync(userDto, PathForConfirmEmail);
                 if (operationDetails.Succedeed)
+                {
                     return View("SuccessRegister");
+                }
                 else
                     ModelState.AddModelError(operationDetails.Property, operationDetails.Message);
             }
             return View(model);
+        }
+
+        public async Task<ActionResult> ConfirmEmail(string userId, string confCode)
+        {
+            if (userId == null || confCode == null)
+                return HttpNotFound();
+            // ТУТ ЗМІНИТИ НА НОРМАЛЬНЕ ІНФОРМУВАННЯ
+
+            var confResult = await UserService.ConfirmEmailAsync(userId, confCode);
+            return View(confResult.Succedeed ? "ConfirmEmail" : null);
+            // ТУТ ТАКООЖ ЩОБ ВОНО НУЛЛ НЕ ПОВЕРАТЛО
         }
 
         private async Task SetInitialData()

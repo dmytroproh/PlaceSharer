@@ -84,6 +84,37 @@ namespace PlaceSharer.WEB.Controllers
             return View(model);
         }
 
+        public async Task<ActionResult> Edit(EditUserViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                View(model);
+            }
+
+            UserDTO editUserDTO = new UserDTO
+            {
+                Id = User.Identity.GetUserId(),
+                Name = model.Name,
+                LastName = model.LastName
+            };
+
+            var editResult = await UserService.EditUser(editUserDTO);
+            if (editResult.Succedeed)
+                return RedirectToAction("Index", "Manage");
+            return View(model);
+        }
+
+        public ActionResult DeleteUser()
+        {
+            return View();
+        }
+
+        [HttpPost, ActionName("DeleteUser")]
+        public ActionResult DeleteUserConfirmed()
+        {
+            //Тут має бути видалення окрім користувача ще його дані Профіля, Місця, Фото, Підписки
+            return RedirectToAction("Index", "Home");
+        }
 
     }
 }

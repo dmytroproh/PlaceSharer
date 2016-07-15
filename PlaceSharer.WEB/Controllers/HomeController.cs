@@ -3,11 +3,28 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PlaceSharer.BLL.DTO;
+using PlaceSharer.BLL.Infrastructure;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin.Security;
+using PlaceSharer.BLL.Interfaces;
+using PlaceSharer.WEB.Models;
+using AutoMapper;
 
 namespace PlaceSharer.WEB.Controllers
 {
     public class HomeController : Controller
     {
+        private IUserService UserService
+        {
+            get
+            {
+                return HttpContext.GetOwinContext().GetUserManager<IUserService>();
+            }
+        }
+
+
         public ActionResult Index()
         {
             return View();
@@ -25,6 +42,16 @@ namespace PlaceSharer.WEB.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+    
+        [HttpPost]
+        public ActionResult UserSearch(string name)
+        {
+            var config = new MapperConfiguration(r => r.CreateMap<UserDTO, RegistrationModel>()).CreateMapper();
+            var users = config.Map<IEnumerable<UserDTO>, List<RegistrationModel>>(UserService.GetUsers(name));
+            ViewBag.Users = users;
+           
+            return View(users);
         }
 
         public ActionResult ChangeCulture(string lang)
