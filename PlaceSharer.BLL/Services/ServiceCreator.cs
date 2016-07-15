@@ -8,12 +8,12 @@ namespace PlaceSharer.BLL.Services
     {
         public IUserService CreateUserService(string connection)
         {
-            return new UserService(new IdentityUnitOfWork(connection));
+            return new UserService(new EFUnitOfWork(connection));
         }
 
         public IPlaceService CreatePlaceService(string connection)
         {
-            return new PlaceService(new IdentityUnitOfWork(connection));
+            return new PlaceService(new EFUnitOfWork(connection));
         }
     }
 }

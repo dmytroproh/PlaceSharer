@@ -16,5 +16,6 @@ namespace PlaceSharer.DAL.EF
 
         public DbSet<ClientProfile> ClientProfiles { get; set; }
         public DbSet<Place> Places { get; set; }
+        public DbSet<Subscription> Subscriptions { get; set; }
     }
 }

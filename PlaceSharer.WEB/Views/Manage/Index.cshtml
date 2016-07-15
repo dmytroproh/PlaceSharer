@@ -1,4 +1,18 @@
-﻿
+﻿@model PlaceSharer.WEB.Models.EditUserViewModel
 <h2>Manage account</h2>
 
 <h3 style="float: left">@Html.ActionLink("Change Password", "ChangePassword", "Manage")</h3>
+
+@using (Html.BeginForm("Edit", "Manage", FormMethod.Post))
+{
+    @Html.LabelFor(model => model.Name)
+    @Html.EditorFor(model => model.Name)
+    <br />
+    @Html.LabelFor(model => model.LastName)
+    @Html.EditorFor(model => model.LastName)
+    <br />
+    <input type="submit" value="Edit user" />
+}
+
+<br />
+@Html.ActionLink("Delete User", "DeleteUser", "Manage");

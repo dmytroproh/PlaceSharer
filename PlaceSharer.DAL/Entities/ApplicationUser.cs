@@ -7,6 +7,13 @@ namespace PlaceSharer.DAL.Entities
     {
         public virtual ClientProfile ClientProfile { get; set; }
         
-        public ICollection<Place> Places { get; set; }
+        public virtual ICollection<Place> Places { get; set; }
+        public virtual ICollection<Subscription> Subscriptions { get; set; }
+
+        public ApplicationUser()
+        {
+            Places = new List<Place>();
+            Subscriptions = new List<Subscription>();
+        }
     }
 }

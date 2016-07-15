@@ -10,10 +10,6 @@ using PlaceSharer.BLL.Interfaces;
 using PlaceSharer.DAL.Entities;
 using PlaceSharer.DAL.Interfaces;
 using AutoMapper;
-using AutoMapper.Configuration;
-using AutoMapper.Execution;
-using AutoMapper.Mappers;
-using AutoMapper.QueryableExtensions;
 
 namespace PlaceSharer.BLL.Services
 {
@@ -40,7 +36,6 @@ namespace PlaceSharer.BLL.Services
                     GeoLat = placeDto.GeoLat
                 };
 
-                //currentUser.Places.Add(place);
                 Database.PlaceManager.Create(place);
 
                 await Database.SaveAsync();
@@ -48,16 +43,9 @@ namespace PlaceSharer.BLL.Services
             }
             return new OperationDetails(false, "User with this Id already exists", "Id");
         }
-
-        public Task<PlaceDTO> GetPlace(string id)
-        {
-            throw new NotImplementedException();
-        }
-
+        
         public IEnumerable<PlaceDTO> GetPlacesByUserId(string UserId)
         {
-            //return Mapper.Map<IEnumerable<Place>, List<PlaceDTO>>(Database.PlaceManager.GetAll());
-
             var config = new MapperConfiguration(r => r.CreateMap<Place, PlaceDTO>()).CreateMapper();
             var places = config.Map<IEnumerable<Place>, List<PlaceDTO>>(Database.PlaceManager.Find(u => u.UserId == UserId));
             return places;

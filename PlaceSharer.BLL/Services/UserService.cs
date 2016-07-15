@@ -1,4 +1,5 @@
-﻿using System;
+﻿using System.Linq;
+using System.Data.Entity;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Security.Claims;
@@ -8,6 +9,7 @@ using PlaceSharer.BLL.Infrastructure;
 using PlaceSharer.BLL.Interfaces;
 using PlaceSharer.DAL.Entities;
 using PlaceSharer.DAL.Interfaces;
+using AutoMapper;
 
 namespace PlaceSharer.BLL.Services
 {
@@ -41,7 +43,7 @@ namespace PlaceSharer.BLL.Services
                 {
                     await Database.UserManager.AddToRoleAsync(user.Id, userDto.Role);
                     
-                    await SendEmailForConfirmEmail(user.Id, pathForConfirmEmail);
+                    //await SendEmailForConfirmEmail(user.Id, pathForConfirmEmail);
                 }
                 ClientProfile clientProfile = new ClientProfile
                 {
@@ -60,6 +62,19 @@ namespace PlaceSharer.BLL.Services
             }
         }
 
+        public IEnumerable<UserDTO> GetUsers(string name)
+        {
+            var config = new MapperConfiguration(r => r.CreateMap<ApplicationUser, UserDTO>()).CreateMapper();
+            List<UserDTO> users = new List<UserDTO>();
+            if(name == null)
+                users = config.Map<IEnumerable<ApplicationUser>, List<UserDTO>>(Database.UserManager.Users.Include(cp => cp.ClientProfile));
+
+            users = config.Map<IEnumerable<ApplicationUser>, List<UserDTO>>(Database.UserManager.Users
+                .Include(cp => cp.ClientProfile)
+                .Where(u => u.ClientProfile.LastName.Contains(name)));
+            return users;
+        }
+
         public async Task<OperationDetails> ChangePasswordAsync(ChangePasswordDTO cpDto)
         {
             var result = await Database.UserManager.ChangePasswordAsync(cpDto.UserId, cpDto.OldPassword, cpDto.NewPassword);
@@ -72,6 +87,21 @@ namespace PlaceSharer.BLL.Services
             {
                 return new OperationDetails(false, "Password wasn`t changed", "");
             }
+        }
+
+        public async Task<OperationDetails> EditUser(UserDTO userDto)
+        {
+            var cProfile = Database.ClientManager.Get(userDto.Id);
+
+            cProfile.Name = userDto.Name;
+            cProfile.LastName = userDto.LastName;
+
+            Database.ClientManager.Update(cProfile);
+
+            await Database.SaveAsync();
+            return new OperationDetails(true, "User updated successfully", "");
+            
+                //return new OperationDetails(false, "User wasn't updated", "");
         }
 
         public async Task<OperationDetails> ConfirmEmailAsync(string userId, string confirmCode)

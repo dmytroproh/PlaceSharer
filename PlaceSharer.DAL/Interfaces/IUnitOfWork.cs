@@ -12,6 +12,7 @@ namespace PlaceSharer.DAL.Interfaces
         ApplicationRoleManager RoleManager { get; }
         IRepository<ClientProfile> ClientManager { get; }
         IRepository<Place> PlaceManager { get; }
+        IRepository<Subscription> SubscriptionManager { get; }
         Task SaveAsync();
     }
 }

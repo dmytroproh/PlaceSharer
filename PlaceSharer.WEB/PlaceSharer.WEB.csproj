@@ -186,8 +186,10 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\ChangePasswordViewModel.cs" />
+    <Compile Include="Models\EditUserViewModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\RegistrationModel.cs" />
+    <Compile Include="Models\SubscriptionViewModel.cs" />
     <Compile Include="Models\UserPlaceViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -234,6 +236,7 @@
     <Content Include="Views\Place\Index.cshtml" />
     <Content Include="Views\Place\Create.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
+    <Content Include="Views\Home\UserSearch.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
