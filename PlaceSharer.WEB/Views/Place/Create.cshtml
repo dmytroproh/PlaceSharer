@@ -13,7 +13,9 @@
             FormMethod.Post, new { @class = "contact_form" })))
         {
             @Html.ValidationSummary()
-
+            
+            @Html.Hidden("GeoLat","")
+            @Html.Hidden("GeoLong", "")
 
             <ul>
                 <li>
@@ -27,21 +29,8 @@
                     @Html.EditorFor(model => model.Description)
                     @Html.ValidationMessageFor(model => model.Description)
                 </li>
-
-                <li>
-                    @Html.LabelFor(model => model.GeoLat)
-                    @Html.EditorFor(model => model.GeoLat)
-                    @Html.ValidationMessageFor(model => model.GeoLat)
-                </li>
-
-                <li>
-                    @Html.LabelFor(model => model.GeoLong)
-                    @Html.EditorFor(model => model.GeoLong)
-                    @Html.ValidationMessageFor(model => model.GeoLong)
-                </li>
-
-                <li>
-                   
+              
+                <li>     
                     <button class="submit" type="submit" value="Create Place" id="create-account">Create</button>
                 </li>
             </ul>
@@ -49,7 +38,7 @@
    
        </div>
 </div>
-}
+
 <div id="mapCanvas"></div>
 <div id="infoPanel">
     <b>Marker status:</b>
@@ -113,6 +102,9 @@
               latLng.lat(),
               latLng.lng()
             ].join(', ');
+
+            document.getElementById('GeoLat').value = latLng.lat();
+            document.getElementById('GeoLong').value = latLng.lng();
         }
 
         function updateMarkerAddress(str) {
@@ -155,13 +147,13 @@
                 placeMarker(event.latLng);
                 updateMarkerPosition(event.latLng);
                 marker.setPosition(event.latLng);
-                @*if(event.latLng != null)
-                {
-                    @Html.Hidden("GeoLat", "event.latLng.lat()")
-                    @Html.Hidden("GeoLong", "event.latLng.lat()")
-                    @Model.GeoLat = event.latLng.lat();
-                    @Model.GeoLong = event.latLng.lng();
-                }*@
+                geoLat = event.latLng.lat();
+                geoLong = event.latLng.lng();
+                    @*@Html.Hidden("GeoLat", event.latLng.lat())
+                    @Html.Hidden("GeoLong", event.latLng.lat())*@
+                    
+                    @*@Model.GeoLat = event.latLng.lat();
+                    @Model.GeoLong = event.latLng.lng();*@
             });
         }
         function placeMarker(location) {
@@ -192,5 +184,4 @@
         google.maps.event.addDomListener(window, 'load', initialize);
 
     </script>
-}
 }

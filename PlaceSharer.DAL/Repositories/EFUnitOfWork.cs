@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace PlaceSharer.DAL.Repositories
 {
-    public class IdentityUnitOfWork : IUnitOfWork
+    public class EFUnitOfWork : IUnitOfWork
     {
         private ApplicationContext database;
 
@@ -16,8 +16,9 @@ namespace PlaceSharer.DAL.Repositories
         private ApplicationRoleManager roleManager;
         private ClientManager clientManager;
         private PlaceManager placeManager;
+        private SubscriptionManager subscriptionManager;
 
-        public IdentityUnitOfWork(string connectionString)
+        public EFUnitOfWork(string connectionString)
         {
             database = new ApplicationContext(connectionString);
 
@@ -25,6 +26,7 @@ namespace PlaceSharer.DAL.Repositories
             roleManager = new ApplicationRoleManager(new RoleStore<ApplicationRole>(database));
             clientManager = new ClientManager(database);
             placeManager = new PlaceManager(database);
+            subscriptionManager = new SubscriptionManager(database);
         }
 
         public IRepository<ClientProfile> ClientManager
@@ -59,7 +61,14 @@ namespace PlaceSharer.DAL.Repositories
             }
         }
 
-   
+        public IRepository<Subscription> SubscriptionManager
+        {
+            get
+            {
+                return subscriptionManager;
+            }
+        }
+
         public async Task SaveAsync()
         {
             await database.SaveChangesAsync();

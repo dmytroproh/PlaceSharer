@@ -28,18 +28,19 @@
              }
            
         </ul>
-        <div id="searchbar" >
-            <form id="searchform">
+        <div id="searchbar">
+            @using (Html.BeginForm("UserSearch", "Home", FormMethod.Post , new { @id = "searchform" }))
+            {
                 <input type="text" name="search" />
                 <input type="submit" value="" />
-            </form>
+            }
         </div>
 
             <ul id="navigation">
         @{
             if (!User.Identity.IsAuthenticated)
             {
-              
+
                 <li>@Html.ActionLink(@Resources.Resource.SignIn, "Login", "Account")</li>
                 <li>@Html.ActionLink(@Resources.Resource.SignUp, "Registration", "Account")</li>
             }
@@ -47,12 +48,12 @@
             {
                 <li>@Html.ActionLink(@Resources.Resource.Settings, "Index", "Manage")</li>
                 <li>@Html.ActionLink(@Resources.Resource.Logout, "Logout", "Account")</li>
-            }
+                }
         }
             </ul>
         </div>
     <div style="clear: both; height:50px"></div>
-  <div>
+    <div>
     @RenderBody() 
   </div>
    <div style="clear: both;"></div>
