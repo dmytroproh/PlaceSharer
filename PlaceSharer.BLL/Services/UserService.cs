@@ -66,12 +66,13 @@ namespace PlaceSharer.BLL.Services
         {
             var config = new MapperConfiguration(r => r.CreateMap<ApplicationUser, UserDTO>()).CreateMapper();
             List<UserDTO> users = new List<UserDTO>();
-            if(name == null)
-                users = config.Map<IEnumerable<ApplicationUser>, List<UserDTO>>(Database.UserManager.Users.Include(cp => cp.ClientProfile));
-
-            users = config.Map<IEnumerable<ApplicationUser>, List<UserDTO>>(Database.UserManager.Users
+            if(name != null)
+                users = config.Map<IEnumerable<ApplicationUser>, List<UserDTO>>(Database.UserManager.Users
                 .Include(cp => cp.ClientProfile)
-                .Where(u => u.ClientProfile.LastName.Contains(name)));
+                .Where(u => u.UserName.Contains(name)));
+            else
+                users = config.Map<IEnumerable<ApplicationUser>, List<UserDTO>>(Database.UserManager.Users.Include(cp => cp.ClientProfile));
+            
             return users;
         }
 
