@@ -24,7 +24,6 @@ namespace PlaceSharer.WEB.Controllers
             }
         }
 
-
         public ActionResult Index()
         {
             return View();
@@ -37,21 +36,20 @@ namespace PlaceSharer.WEB.Controllers
             return View();
         }
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
 
+        public ActionResult UserSearch()
+        {
             return View();
         }
-    
+        
         [HttpPost]
         public ActionResult UserSearch(string name)
         {
             var config = new MapperConfiguration(r => r.CreateMap<UserDTO, RegistrationModel>()).CreateMapper();
             var users = config.Map<IEnumerable<UserDTO>, List<RegistrationModel>>(UserService.GetUsers(name));
-            ViewBag.Users = users;
-           
-            return View(users);
+            ViewBag.UserList = users;
+
+            return View();
         }
 
         public ActionResult ChangeCulture(string lang)
