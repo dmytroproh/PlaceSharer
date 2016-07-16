@@ -1,9 +1,21 @@
-﻿@using PlaceSharer.WEB.Models
-@model IEnumerable<RegistrationModel>
+﻿@model PlaceSharer.WEB.Models.SubscriptionViewModel
 <h2>Search User</h2>
-
-@foreach (var item in Model)
+@using (Html.BeginForm("Subscribe", "Friend", FormMethod.Post))
 {
-    <h3>@item.Name</h3>
-    <h3>@item.LastName</h3>
+    foreach (var item in ViewBag.UserList)
+    {
+        <div style="border: 3px solid blue; margin: 3px">
+           <h3>@item.Name</h3>
+           <h3>@item.LastName</h3>
+           <h3>@item.UserName</h3>
+
+           @if (User.Identity.IsAuthenticated)
+           {
+              if (!(item.UserName == User.Identity.Name))
+                {
+                    <button name="subscriptionUser" type="submit" value="@item.UserName">Subscribe</button>
+                }
+            }
+        </div>
+    }
 }
