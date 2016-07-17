@@ -11,7 +11,7 @@ namespace PlaceSharer.WEB.Models
 
         [Required]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(ResourceType = typeof(Resources.Resource), Name = "Password")]
         public string Password { get; set; }
 
         [Display(Name = "Remember me?")]

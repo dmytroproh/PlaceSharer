@@ -1,9 +1,17 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background-image: url(http://365psd.ru/images/backgrounds/bg-lightl-903.jpg);
 }
 
-
+h3 {
+    margin: 1em 0 0.5em 0;
+    color: #343434;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 25px;
+    font-family: Arial, Helvetica, sans-serif;
+}
 .contact_form h2, .contact_form label {font-family:Georgia, Times, "Times New Roman", serif;}
 *:focus {outline: none;}
 #sn_buttons {
@@ -41,11 +49,10 @@ padding:0px;
 }
 .contact_form li{
 padding:12px;
-border-bottom:1px solid #eee;
 position:relative;
 }
 .contact_form {
-    margin-left:25%;
+    margin-left:33%;
 }
 .contact_form li:first-child, .contact_form li:last-child {
 
@@ -186,10 +193,8 @@ box-shadow: 0px 0px 2px #444;
 #main_menu {
 min-width: 100%;
 float: left;
-position: fixed;
 left: 0px;
 top: 30px;
-padding-right: 10px;
 background: #454545;
 background: -moz-linear-gradient(top, #454545, #737373);
 background: -webkit-gradient(linear, center top, center bottom from(#454545,), to(#737373));
@@ -253,7 +258,7 @@ text-shadow: -3px -1px 3px #555;
 #searchbar {
 float: left;
 padding: 15px 10px;
-padding-left: 250px;
+padding-left: 20px;
 border-left: 1px solid #888;
 }
 
@@ -272,7 +277,7 @@ float: left;
 
 #searchform input[type='text'] {
 
-height: 24px;
+height: 20px;
 width: 200px;
 border: 1px solid #fff;
 border-right: none;
@@ -294,7 +299,7 @@ box-shadow: inset 0px 0px 1px #444;
 #searchform input[type='submit'] {
 border: 1px solid #fff;
 border-left: none;
-height: 28px;
+height: 24px;
 width: 28px;
 background: #999 url(search.png) no-repeat center center;
 -moz-border-radius: 0px 5px 5px 0px;

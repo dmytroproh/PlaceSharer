@@ -1,0 +1,95 @@
+﻿
+@{
+    ViewBag.Title = "Manage";
+}
+
+<h3 style="margin-left:35%">@Resources.Resource.SubscriberManagement</h3>
+
+<button class ="submit" onclick="addrow()">Добавить</button>
+<form>
+    <div id='tcontainer'></div>
+</form>
+
+<script>
+  mytable = document.createElement('table');
+  mytable.style.cssText = "float: left;\
+  margin-left:25%;\
+  margin-bottom:5%;\
+  padding-right:10px;\
+  padding-left:10px;\
+  -moz-border-radius: 0px 10px 10px 0px;\
+  -webkit-border-bottom-right-radius: 10px;\
+  -webkit-border-top-right-radius: 10px;\
+  border-radius: 0px 10px 10px 0px;\
+  border: 1px solid #eee;\
+  -moz-box-shadow: 0px 0px 2px #444;\
+  -webkit-box-shadow: 0px 0px 2px #444;\
+  box-shadow: 0px 0px 2px #444;\
+  background: #454545;\
+  background: -moz-linear-gradient(top, #454545, #737373);\
+  text-decoration: none;\
+  font-size: 14px;\
+  font-family: Arial, Helvetica, sans-serif;\
+  border-right: 1px solid #333;\
+  border-left: 1px solid #888;\
+  text-align: center;\
+  color: #dede5d;\
+  text-shadow: 3px 1px 3px #111;\
+  background: -webkit-gradient(linear, center top, center bottom from(#454545,), to(#737373));\
+  opacity: 0.9;";
+  mytable.setAttribute('id', 'mytbl');
+
+  newrow = mytable.insertRow(0);
+
+  newcell = newrow.insertCell(0);
+  newcell.innerHTML = 'First Name';
+  newcell = newrow.insertCell(1);
+  newcell.innerHTML = 'Last Name';
+
+  newcell = newrow.insertCell(2);
+  newcell.innerHTML = 'Posts Count';
+
+  newcell = newrow.insertCell(3);
+  newcell.innerHTML = 'Action';
+
+    newrow = mytable.insertRow(1);
+
+    newcell = newrow.insertCell(0);
+    newcell.innerHTML = '<input type="text" name="tcell">';
+
+    newcell = newrow.insertCell(1);
+    newcell.innerHTML = '<input type="text" name="tcell">';
+
+    newcell = newrow.insertCell(2);
+    newcell.innerHTML = '<input type="text" name="tcell">';
+
+    newcell = newrow.insertCell(3);
+    newcell.innerHTML = '<input type="text" name="tcell">';
+
+  document.getElementById('tcontainer').appendChild(mytable);
+</script>
+
+<script>
+function addrow()
+{
+  mytable = document.getElementById('mytbl');
+  rowcount = mytable.rows.length;
+
+  newrow = mytable.insertRow(rowcount);
+
+  newcell = newrow.insertCell(0);
+  newcell.innerHTML = '<input type="text" name="tcell">';
+
+  newcell = newrow.insertCell(1);
+  newcell.innerHTML = '<input type="text" name="tcell">';
+
+  newcell = newrow.insertCell(2);
+  newcell.innerHTML = '<input type="text" name="tcell">';
+
+  newcell = newrow.insertCell(3);
+  newcell.innerHTML = '<input type="text" name="tcell">';
+}
+</script>
+
+
+
