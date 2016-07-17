@@ -6,8 +6,11 @@ using PlaceSharer.BLL.Infrastructure;
 
 namespace PlaceSharer.BLL.Interfaces
 {
-    public interface ISubscriptionService
+    public interface ISubscriptionService : IDisposable
     {
         Task<OperationDetails> CreateAsync(SubscriptionDTO subscriptionDTO);
+        Task<OperationDetails> RemoveAsync(SubscriptionDTO subscriptionDTO);
+        IEnumerable<SubscriptionDTO> GetSubscriptions(string Id);
+        Task<string> GetSubscriptionIdByName(string userName);
     }
 }

@@ -24,6 +24,14 @@ namespace PlaceSharer.WEB.Controllers
             }
         }
 
+        private ISubscriptionService SubscriptionService
+        {
+            get
+            {
+                return HttpContext.GetOwinContext().Get<ISubscriptionService>();
+            }
+        }
+
         public ActionResult Index()
         {
             return View();
@@ -39,7 +47,7 @@ namespace PlaceSharer.WEB.Controllers
 
         public ActionResult UserSearch()
         {
-            return View();
+            return RedirectToAction("UserSearch", "Home", new { name = "" });
         }
         
         [HttpPost]
@@ -49,6 +57,14 @@ namespace PlaceSharer.WEB.Controllers
             var users = config.Map<IEnumerable<UserDTO>, List<RegistrationModel>>(UserService.GetUsers(name));
             ViewBag.UserList = users;
 
+            if (User.Identity.IsAuthenticated)
+            {
+                var configSubsc = new MapperConfiguration(r => r.CreateMap<SubscriptionDTO, SubscriptionModel>()).CreateMapper();
+
+                var subscriptions = configSubsc.Map<IEnumerable<SubscriptionDTO>, List<SubscriptionModel>>(SubscriptionService.GetSubscriptions(User.Identity.GetUserId()));
+                ViewBag.SubscriptionList = subscriptions;
+            }
+            
             return View();
         }
 

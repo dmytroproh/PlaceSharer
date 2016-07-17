@@ -1,21 +1,31 @@
-﻿@model PlaceSharer.WEB.Models.SubscriptionViewModel
+﻿
 <h2>Search User</h2>
-@using (Html.BeginForm("Subscribe", "Friend", FormMethod.Post))
+@using (Html.BeginForm("Subscription", "Friend", FormMethod.Post))
 {
-    foreach (var item in ViewBag.UserList)
+    foreach (var user in ViewBag.UserList)
     {
         <div style="border: 3px solid blue; margin: 3px">
-           <h3>@item.Name</h3>
-           <h3>@item.LastName</h3>
-           <h3>@item.UserName</h3>
+           <h3>@user.Name</h3>
+           <h3>@user.LastName</h3>
+           <h3>@user.UserName</h3>
 
            @if (User.Identity.IsAuthenticated)
            {
-              if (!(item.UserName == User.Identity.Name))
-                {
-                    <button name="subscriptionUser" type="submit" value="@item.UserName">Subscribe</button>
-                }
-            }
+               if (!(user.UserName == User.Identity.Name))
+               {
+                   foreach (var subscription in ViewBag.SubscriptionList)
+                   {
+                       if (subscription.SubscriptionUserName == user.UserName)
+                       {
+                            <button name="unSubscriptionUser" type="submit" value="@user.UserName">UnSubscribe</button>
+                       }
+                       else if(!(subscription.SubscriptionUserName == user.UserName))
+                       {
+                            <button name="subscriptionUser" type="submit" value="@user.UserName">Subscribe</button>
+                       }
+                   }
+               }
+           }
         </div>
     }
 }

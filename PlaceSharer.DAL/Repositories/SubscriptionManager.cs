@@ -21,11 +21,11 @@ namespace PlaceSharer.DAL.Repositories
             Database.Subscriptions.Add(item);
         }
 
-        public void Delete(Subscription item)
+        public void Delete(string id)
         {
-            Database.Subscriptions.Find(item);
-            if (item != null)
-                Database.Subscriptions.Remove(item);
+            Subscription subscription = Database.Subscriptions.Find(id);
+            if (subscription != null)
+                Database.Subscriptions.Remove(subscription);
         }
 
         public void Update(Subscription item)

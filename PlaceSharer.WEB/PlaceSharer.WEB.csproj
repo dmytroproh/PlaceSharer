@@ -189,7 +189,7 @@
     <Compile Include="Models\EditUserViewModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\RegistrationModel.cs" />
-    <Compile Include="Models\SubscriptionViewModel.cs" />
+    <Compile Include="Models\SubscriptionModel.cs" />
     <Compile Include="Models\UserPlaceViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

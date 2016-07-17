@@ -69,9 +69,12 @@ namespace PlaceSharer.BLL.Services
             if(name != null)
                 users = config.Map<IEnumerable<ApplicationUser>, List<UserDTO>>(Database.UserManager.Users
                 .Include(cp => cp.ClientProfile)
+                .Include(subs => subs.Subscriptions)
                 .Where(u => u.UserName.Contains(name)));
             else
-                users = config.Map<IEnumerable<ApplicationUser>, List<UserDTO>>(Database.UserManager.Users.Include(cp => cp.ClientProfile));
+                users = config.Map<IEnumerable<ApplicationUser>, List<UserDTO>>(Database.UserManager.Users
+                    .Include(subs => subs.Subscriptions)
+                    .Include(cp => cp.ClientProfile));
             
             return users;
         }

@@ -21,6 +21,7 @@ namespace PlaceSharer.WEB.App_Start
         {
             app.CreatePerOwinContext<IUserService>(CreateUserService);
             app.CreatePerOwinContext<IPlaceService>(CreatePlaceService);
+            app.CreatePerOwinContext<ISubscriptionService>(CreateSubscriptionService);
 
             app.UseCookieAuthentication(new CookieAuthenticationOptions
             {
@@ -47,6 +48,11 @@ namespace PlaceSharer.WEB.App_Start
         private IPlaceService CreatePlaceService()
         {
             return serviceCreator.CreatePlaceService("DefaultConnection");
+        }
+
+        private ISubscriptionService CreateSubscriptionService()
+        {
+            return serviceCreator.CreateSubscriptionService("DefaultConnection");
         }
     }
 }

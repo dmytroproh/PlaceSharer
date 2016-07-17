@@ -13,6 +13,6 @@ namespace PlaceSharer.DAL.Interfaces
         IEnumerable<T> Find(Func<T, Boolean> predicate);
         void Create(T item);
         void Update(T item);
-        void Delete(T item);
+        void Delete(string item);
     }
 }
