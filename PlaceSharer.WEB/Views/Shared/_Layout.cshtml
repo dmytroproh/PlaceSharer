@@ -15,7 +15,7 @@
             <li>@Html.ActionLink(@Resources.Resource.Friends, "Index", "Friend")</li>
             <li>@Html.ActionLink(@Resources.Resource.Account, "Index", "Place")</li>
         </ul>
-        <ul id="navigation" style="margin-left:400px">
+        <ul id="navigation" style="margin-left:360px">
             @{ 
                 if (HttpContext.Current.Request.Cookies["lang"] != null && HttpContext.Current.Request.Cookies["lang"].Value == "ru")
                 {
