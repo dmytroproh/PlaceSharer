@@ -11,11 +11,11 @@
     
     <div id="main_menu">
         <ul id="navigation">.
-            <li>@Html.ActionLink(@Resources.Resource.Home, "Index", "Home")</li>
+            <li style="margin-left:40px">@Html.ActionLink(@Resources.Resource.Home, "Index", "Home")</li>
             <li>@Html.ActionLink(@Resources.Resource.Friends, "Index", "Friend")</li>
             <li>@Html.ActionLink(@Resources.Resource.Account, "Index", "Place")</li>
         </ul>
-        <ul id="navigation">
+        <ul id="navigation" style="margin-left:400px">
             @{ 
                 if (HttpContext.Current.Request.Cookies["lang"] != null && HttpContext.Current.Request.Cookies["lang"].Value == "ru")
                 {

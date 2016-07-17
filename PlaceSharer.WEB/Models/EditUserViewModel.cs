@@ -6,11 +6,11 @@ namespace PlaceSharer.WEB.Models
     {
         
         [StringLength(50, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 2)]
-        [Display(Name = "Name")]
+        [Display(ResourceType = typeof(Resources.Resource), Name = "FirstName")]
         public string Name { get; set; }
         
         [StringLength(50, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 2)]
-        [Display(Name = "Last Name")]
+        [Display(ResourceType = typeof(Resources.Resource), Name = "LastName")]
         public string LastName { get; set; }
     }
 }

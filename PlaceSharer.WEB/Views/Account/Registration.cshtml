@@ -7,12 +7,12 @@
 <div class="main">
 
     <div >
-        <h3 style="margin-left:25%"; font-weight: normal>Registration</h3>
+       
         @using (Html.BeginForm("Registration", "Account",
-                new { ReturnUrl = ViewBag.ReturnUrl },
-                FormMethod.Post, new { @class = "contact_form" }))
+                    new { ReturnUrl = ViewBag.ReturnUrl },
+                    FormMethod.Post, new { @class = "contact_form" }))
         {
-
+            <h3>@Resources.Resource.SignUp</h3>
             @Html.AntiForgeryToken()
 
             @Html.ValidationSummary()
@@ -53,7 +53,7 @@
                 @Html.ValidationMessageFor(model => model.ConfirmPassword)
             </li>
             <li>
-                <button class="submit" type="submit" value="Create Account" id="create-account">Log In</button>
+                <button class="submit" type="submit" value="Create Account" id="create-account">@Resources.Resource.SignUp</button>
             </li>
             <li id="sn_buttons">
                     <button class="fb_button" type="submit">Facebook</button>

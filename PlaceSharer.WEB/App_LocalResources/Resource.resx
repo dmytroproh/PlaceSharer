@@ -123,14 +123,53 @@
   <data name="Account" xml:space="preserve">
     <value>Account</value>
   </data>
+  <data name="Action" xml:space="preserve">
+    <value>Action</value>
+  </data>
+  <data name="Change" xml:space="preserve">
+    <value>Change</value>
+  </data>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>Change Password</value>
+  </data>
+  <data name="ConfirmNewPass" xml:space="preserve">
+    <value>Confirm new password</value>
+  </data>
+  <data name="ConfirmPass" xml:space="preserve">
+    <value>Confirm Password</value>
+  </data>
+  <data name="Create" xml:space="preserve">
+    <value>Create Place</value>
+  </data>
+  <data name="CurrentPass" xml:space="preserve">
+    <value>Current password</value>
+  </data>
+  <data name="FirstName" xml:space="preserve">
+    <value>First Name</value>
+  </data>
   <data name="Friends" xml:space="preserve">
     <value>Friends</value>
   </data>
   <data name="Home" xml:space="preserve">
     <value>Home</value>
   </data>
+  <data name="LastName" xml:space="preserve">
+    <value>Last Name</value>
+  </data>
   <data name="Logout" xml:space="preserve">
     <value>Log Out</value>
+  </data>
+  <data name="ManageAccount" xml:space="preserve">
+    <value>Change profile data</value>
+  </data>
+  <data name="NewPass" xml:space="preserve">
+    <value>New password</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="PostCount" xml:space="preserve">
+    <value>Post Count</value>
   </data>
   <data name="PrivacyPolicy" xml:space="preserve">
     <value>Privacy Policy</value>
@@ -143,5 +182,18 @@
   </data>
   <data name="SignUp" xml:space="preserve">
     <value>Sign Up</value>
+  </data>
+  <data name="SubscriberManagement" xml:space="preserve">
+    <value>Subscriber Management</value>
+  </data>
+  <data name="Sucess" xml:space="preserve">
+    <value>Register Successfully</value>
+  </data>
+  <data name="UserName" xml:space="preserve">
+    <value>User Name</value>
+  </data>
+  <data name="Welcome" xml:space="preserve">
+    <value>Welcome to Place Sharer! 
+This social network for those who loves to travel and loves to spend the weekend at home. Use our map for what to tell your friends about where you've been.</value>
   </data>
 </root>

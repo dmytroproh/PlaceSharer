@@ -30,5 +30,9 @@ namespace PlaceSharer.WEB.Controllers
         {
             return View();
         }
+        public ActionResult Manage()
+        {
+            return View();
+        }
     }
 }
