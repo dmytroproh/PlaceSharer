@@ -121,6 +121,12 @@ namespace PlaceSharer.BLL.Services
 
         }
 
+        public async Task<string> GetUserIdByName(string userName)
+        {
+            ApplicationUser user = await Database.UserManager.FindByNameAsync(userName);
+            return user.Id.ToString();
+        }
+
         public async Task SetInitialData(UserDTO adminDto, List<string> roles)
         {
             foreach(string roleName in roles)

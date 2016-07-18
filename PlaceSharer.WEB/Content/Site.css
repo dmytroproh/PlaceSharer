@@ -13,7 +13,7 @@ h3 {
 }
 .contact_form h2, .contact_form label {font-family:Georgia, Times, "Times New Roman", serif;}
 *:focus {outline: none;}
-#friends {
+#Subscriptions {
     margin-left: 5%;
     border:1px solid #aaa;
     border-radius:2px;

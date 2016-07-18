@@ -16,6 +16,7 @@ namespace PlaceSharer.BLL.Interfaces
 
         Task<OperationDetails> ConfirmEmailAsync(string userId, string confirmCode);
         Task<OperationDetails> EditUser(UserDTO userDto);
+        Task<string> GetUserIdByName(string userName);
 
         Task SetInitialData(UserDTO adminDto, List<string> roles);
     }

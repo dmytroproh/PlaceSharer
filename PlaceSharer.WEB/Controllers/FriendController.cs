@@ -35,7 +35,15 @@ namespace PlaceSharer.WEB.Controllers
             }
         }
 
-       [HttpPost]
+        private IPlaceService PlaceService
+        {
+            get
+            {
+                return HttpContext.GetOwinContext().Get<IPlaceService>();
+            }
+        }
+
+        [HttpPost]
        public async Task<ActionResult> Subscription(string subscriptionUser,string unSubscriptionUser)
         {
             if (subscriptionUser != null && unSubscriptionUser == null)
@@ -76,7 +84,31 @@ namespace PlaceSharer.WEB.Controllers
       
         public ActionResult Index()
         {
+            var configSubsc = new MapperConfiguration(r => r.CreateMap<SubscriptionDTO, SubscriptionModel>()).CreateMapper();
+
+            var subscriptions = configSubsc.Map<IEnumerable<SubscriptionDTO>, List<SubscriptionModel>>(SubscriptionService.GetSubscriptions(User.Identity.GetUserId()));
+            
+            SelectList subscriptionsSL = new SelectList(subscriptions, "SubscriptionUserName", "SubscriptionUserName");
+            if(ViewBag.Subscriptions == null)
+                ViewBag.Subscriptions = subscriptionsSL;
             return View();
+        }
+
+        string userId = "";
+        [HttpPost]
+        public async Task <ActionResult> Index(string Subscriptions)
+        {
+            userId = await UserService.GetUserIdByName(Subscriptions);
+
+            return View();
+        }
+
+        public JsonResult GetData()
+        {
+            var config = new MapperConfiguration(r => r.CreateMap<PlaceDTO, UserPlaceViewModel>()).CreateMapper();
+            var places = config.Map<IEnumerable<PlaceDTO>, List<UserPlaceViewModel>>(PlaceService.GetPlacesByUserId(userId));
+
+            return Json(places, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult SubscriptionsManagement()
@@ -88,6 +120,7 @@ namespace PlaceSharer.WEB.Controllers
             return View(subscriptions);
         }
 
+        
         [HttpPost]
         public async Task<ActionResult> SubscriptionsManagement(string subscriptionUser, string unSubscriptionUser)
         {
