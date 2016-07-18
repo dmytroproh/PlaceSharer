@@ -64,6 +64,7 @@
     <Compile Include="DTO\ChangePasswordDTO.cs" />
     <Compile Include="DTO\PlaceDTO.cs" />
     <Compile Include="DTO\SubscriptionDTO.cs" />
+    <Compile Include="DTO\SubscriptionsManageDTO.cs" />
     <Compile Include="DTO\UserDTO.cs" />
     <Compile Include="Infrastructure\OperationDetails.cs" />
     <Compile Include="Interfaces\IPlaceService.cs" />

@@ -15,5 +15,10 @@ namespace PlaceSharer.BLL.Services
         {
             return new PlaceService(new EFUnitOfWork(connection));
         }
+
+        public ISubscriptionService CreateSubscriptionService(string connection)
+        {
+            return new SubscriptionService(new EFUnitOfWork(connection));
+        }
     }
 }

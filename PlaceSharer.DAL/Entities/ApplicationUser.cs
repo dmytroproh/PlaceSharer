@@ -5,6 +5,8 @@ namespace PlaceSharer.DAL.Entities
 {
     public class ApplicationUser : IdentityUser
     {
+        public virtual Subscription SubscriptionUser { get; set; }
+
         public virtual ClientProfile ClientProfile { get; set; }
         
         public virtual ICollection<Place> Places { get; set; }

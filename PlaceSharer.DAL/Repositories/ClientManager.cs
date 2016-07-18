@@ -46,11 +46,11 @@ namespace PlaceSharer.DAL.Repositories
             Database.Entry(item).State = System.Data.Entity.EntityState.Modified;
         }
 
-        public void Delete(ClientProfile item)
+        public void Delete(string id)
         {
-            ClientProfile profile = Database.ClientProfiles.Find(item);
+            ClientProfile profile = Database.ClientProfiles.Find(id);
             if (profile != null)
-                Database.ClientProfiles.Remove(item);
+                Database.ClientProfiles.Remove(profile);
         }
 
         public void Dispose()

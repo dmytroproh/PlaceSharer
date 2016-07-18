@@ -41,11 +41,11 @@ namespace PlaceSharer.DAL.Repositories
             Database.Entry(item).State = System.Data.Entity.EntityState.Modified;
         }
 
-        public void Delete(Place item)
+        public void Delete(string id)
         {
-            Place place = Database.Places.Find(item);
+            Place place = Database.Places.Find(id);
             if (place != null)
-                Database.Places.Remove(item);
+                Database.Places.Remove(place);
         }
 
         public void Dispose()
