@@ -5,6 +5,8 @@
 
 @Html.DropDownList("friends", new SelectList(new string[] { "Vasa", "Kolya", "Ashot", "Pashot" }), "Fiends")
 
+<<<<<<< HEAD
+=======
 
 <script src="https://maps.google.com/maps/api/js?key=AIzaSyAf8q-0gl4zbuqzUd48OVK6kS-RFFcZneg&callback=initMap" type="text/javascript"></script>
 <div>
@@ -63,3 +65,4 @@
             }
         </script>
     }
+>>>>>>> cba65b55590452a360ad6befca66b8df04b11fa9
