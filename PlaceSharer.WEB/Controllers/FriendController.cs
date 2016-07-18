@@ -78,8 +78,21 @@ namespace PlaceSharer.WEB.Controllers
         {
             return View();
         }
-        public ActionResult Manage()
+
+        public ActionResult SubscriptionsManagement()
         {
+            var configSubsc = new MapperConfiguration(r => r.CreateMap<SubscriptionsManageDTO, SubscriptionsManageViewModel>()).CreateMapper();
+
+            var subscriptions = configSubsc.Map<IEnumerable<SubscriptionsManageDTO>, List<SubscriptionsManageViewModel>>(SubscriptionService.GetSubscriptionsWithUserInfo(User.Identity.GetUserId()));
+            
+            return View(subscriptions);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> SubscriptionsManagement(string subscriptionUser, string unSubscriptionUser)
+        {
+            await Subscription(subscriptionUser, unSubscriptionUser);
+
             return View();
         }
     }

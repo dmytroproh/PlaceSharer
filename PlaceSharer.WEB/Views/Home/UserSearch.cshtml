@@ -13,19 +13,14 @@
            {
                if (!(user.UserName == User.Identity.Name))
                {
-                   foreach (var subscription in ViewBag.SubscriptionList)
-                   {
-                       if (subscription.SubscriptionUserName == user.UserName)
-                       {
+                @*<button name="subscriptionUser" type="submit" value="@user.UserName">Subscribe</button>*@
+
                             <button name="unSubscriptionUser" type="submit" value="@user.UserName">UnSubscribe</button>
-                       }
-                       else if(!(subscription.SubscriptionUserName == user.UserName))
-                       {
+
                             <button name="subscriptionUser" type="submit" value="@user.UserName">Subscribe</button>
-                       }
-                   }
                }
            }
-        </div>
+           </div>
     }
 }
+

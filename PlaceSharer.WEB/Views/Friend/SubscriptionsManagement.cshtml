@@ -1,0 +1,67 @@
+﻿@using PlaceSharer.WEB.Models
+@model IEnumerable<SubscriptionsManageViewModel>
+
+@{
+    ViewBag.Title = "Subscriptions Management";
+}
+
+<h3 style="margin-left:35%">@Resources.Resource.SubscriberManagement</h3>
+
+<table style="float: left;
+  margin-left:25%;
+  margin-bottom:5%;
+  padding-right:10px;
+  padding-left:10px;
+  -moz-border-radius: 0px 10px 10px 0px;
+  -webkit-border-bottom-right-radius: 10px;
+  -webkit-border-top-right-radius: 10px;
+  border-radius: 0px 10px 10px 0px;
+  border: 1px solid #eee;
+  -moz-box-shadow: 0px 0px 2px #444;
+  -webkit-box-shadow: 0px 0px 2px #444;
+  box-shadow: 0px 0px 2px #444;
+  background: #454545;
+  background: -moz-linear-gradient(top, #454545, #737373);
+  text-decoration: none;
+  font-size: 14px;
+  font-family: Arial, Helvetica, sans-serif;
+  border-right: 1px solid #333;
+  border-left: 1px solid #888;
+  text-align: center;
+  color: #dede5d;
+  text-shadow: 3px 1px 3px #111;
+  opacity: 0.9">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            <h4>@Html.DisplayNameFor(model => model.PostsCount)</h4>
+        </th>
+        <th>
+            <h4>Action</h4>
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PostsCount)
+            </td>
+            <td>
+                @Html.ActionLink("Unfollow", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+    }
+
+</table>

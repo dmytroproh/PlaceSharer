@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Data.Entity;
 using System.Security.Claims;
 using Microsoft.AspNet.Identity;
 using PlaceSharer.BLL.DTO;
@@ -73,6 +74,23 @@ namespace PlaceSharer.BLL.Services
                 subscriptions = config.Map<IEnumerable<Subscription>, List<SubscriptionDTO>>(Database.SubscriptionManager.Find(u => u.SubscriberId == userId));
             }
            
+            return subscriptions;
+        }
+
+        public IEnumerable<SubscriptionsManageDTO> GetSubscriptionsWithUserInfo(string userId)
+        {
+            var config = new MapperConfiguration(r => r.CreateMap<Subscription, SubscriptionsManageDTO>()
+            .ForMember("FirstName", u => u.MapFrom(us => us.SubscriptionUser.ClientProfile.Name))
+            .ForMember("LastName", u => u.MapFrom(us => us.SubscriptionUser.ClientProfile.LastName))
+            .ForMember("PostsCount", u => u.MapFrom(us => us.SubscriptionUser.Places.Count))
+            .ForMember("SubscriptionUserId", u => u.MapFrom(us => us.SubscriptionUser.UserName))
+            ).CreateMapper();
+            List<SubscriptionsManageDTO> subscriptions = new List<SubscriptionsManageDTO>();
+            if (userId != null)
+            {
+                subscriptions = config.Map<IEnumerable<Subscription>, List<SubscriptionsManageDTO>>(Database.SubscriptionManager.Find(u => u.SubscriberId == userId));
+            }
+
             return subscriptions;
         }
 
