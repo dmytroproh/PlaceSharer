@@ -88,6 +88,33 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add a photo.
+        /// </summary>
+        public static string AddPhoto {
+            get {
+                return ResourceManager.GetString("AddPhoto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Celebrate any place on the world map . The whole world is available ..
+        /// </summary>
+        public static string AllWorld {
+            get {
+                return ResourceManager.GetString("AllWorld", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to We wish you a pleasant journey with PlaceSharer!.
+        /// </summary>
+        public static string AtLast {
+            get {
+                return ResourceManager.GetString("AtLast", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Change.
         /// </summary>
         public static string Change {
@@ -124,6 +151,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Drag your cursor over the map with your mouse . However , when you click it will also move to the right place for you . It&apos;s really friendly ..
+        /// </summary>
+        public static string Cont {
+            get {
+                return ResourceManager.GetString("Cont", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Create Place.
         /// </summary>
         public static string Create {
@@ -138,6 +174,24 @@ namespace Resources {
         public static string CurrentPass {
             get {
                 return ResourceManager.GetString("CurrentPass", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CurrentPosition.
+        /// </summary>
+        public static string CurrentPosition {
+            get {
+                return ResourceManager.GetString("CurrentPosition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Description.
+        /// </summary>
+        public static string Description {
+            get {
+                return ResourceManager.GetString("Description", resourceCulture);
             }
         }
         
@@ -205,11 +259,29 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The most recognizable in the world map - google maps..
+        /// </summary>
+        public static string OurMap {
+            get {
+                return ResourceManager.GetString("OurMap", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Password.
         /// </summary>
         public static string Password {
             get {
                 return ResourceManager.GetString("Password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Places.
+        /// </summary>
+        public static string Places {
+            get {
+                return ResourceManager.GetString("Places", resourceCulture);
             }
         }
         
