@@ -1,7 +1,7 @@
 ﻿@model PlaceSharer.WEB.Models.LoginModel
 
 @{
-    ViewBag.Title = "Log In";
+    ViewBag.Title = @Resources.Resource.SignIn;
 }
 <div class="main">
     <div>
@@ -30,8 +30,8 @@
                         <button class="submit" type="submit" value="Create Account" id="create-account">@Resources.Resource.SignIn</button>
                     </li>
                     <li id="sn_buttons">
-                        <button class="fb_button" type="submit">Facebook</button>
-                        <button class="google_button" type="submit">google</button>
+                        @*<button class="fb_button" type="submit">Facebook</button>
+                        <button class="google_button" type="submit">google</button>*@
                     </li>
                 </ul>
                

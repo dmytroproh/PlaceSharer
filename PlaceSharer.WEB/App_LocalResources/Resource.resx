@@ -126,6 +126,15 @@
   <data name="Action" xml:space="preserve">
     <value>Action</value>
   </data>
+  <data name="AddPhoto" xml:space="preserve">
+    <value>Add a photo</value>
+  </data>
+  <data name="AllWorld" xml:space="preserve">
+    <value>Celebrate any place on the world map . The whole world is available .</value>
+  </data>
+  <data name="AtLast" xml:space="preserve">
+    <value>We wish you a pleasant journey with PlaceSharer!</value>
+  </data>
   <data name="Change" xml:space="preserve">
     <value>Change</value>
   </data>
@@ -138,11 +147,20 @@
   <data name="ConfirmPass" xml:space="preserve">
     <value>Confirm Password</value>
   </data>
+  <data name="Cont" xml:space="preserve">
+    <value>Drag your cursor over the map with your mouse . However , when you click it will also move to the right place for you . It's really friendly .</value>
+  </data>
   <data name="Create" xml:space="preserve">
     <value>Create Place</value>
   </data>
   <data name="CurrentPass" xml:space="preserve">
     <value>Current password</value>
+  </data>
+  <data name="CurrentPosition" xml:space="preserve">
+    <value>CurrentPosition</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Description</value>
   </data>
   <data name="FirstName" xml:space="preserve">
     <value>First Name</value>
@@ -165,8 +183,14 @@
   <data name="NewPass" xml:space="preserve">
     <value>New password</value>
   </data>
+  <data name="OurMap" xml:space="preserve">
+    <value>The most recognizable in the world map - google maps.</value>
+  </data>
   <data name="Password" xml:space="preserve">
     <value>Password</value>
+  </data>
+  <data name="Places" xml:space="preserve">
+    <value>Places</value>
   </data>
   <data name="PostCount" xml:space="preserve">
     <value>Post Count</value>

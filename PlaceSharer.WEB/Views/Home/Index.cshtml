@@ -1,8 +1,20 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = @Resources.Resource.Home;
 }
 
-<div >
-            <h3 style="margin-left:5%">@Resources.Resource.Welcome</h3>
-        
-</div>
+
+    <h3 style="margin-left:5%">@Resources.Resource.Welcome</h3>
+    <figure class="fig">
+        <img src="Content/map.png">
+        <figcaption>
+            @Resources.Resource.AllWorld;
+        </figcaption>
+    </figure>
+    <h3 style="margin-left:5%">@Resources.Resource.Cont</h3>
+    <figure class="fig">
+        <img src="Content/Capture.png">
+        <figcaption>
+            @Resources.Resource.OurMap;
+        </figcaption>
+    </figure>
+    <h3 style="margin-left:5%">@Resources.Resource.AtLast</h3>
