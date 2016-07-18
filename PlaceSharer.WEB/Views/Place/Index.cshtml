@@ -11,18 +11,64 @@
     <br />
 }
 
-<script src="https://maps.google.com/maps/api/js?key=AIzaSyAf8q-0gl4zbuqzUd48OVK6kS-RFFcZneg&callback=initMap" type="text/javascript"></script>
 
 <div id="canvas" style="height: 500px; width:800px;  margin-left: 5%"></div>
     <div style="margin-left:10%; margin-top:15px">
 @Html.ActionLink(@Resources.Resource.Create, "Create", "Place", null,
      new { @style = "linkMy" })
 <br>
-@Html.ActionLink(@Resources.Resource.SubscriberManagement, "Manage", "Friend", null,
+@Html.ActionLink(@Resources.Resource.SubscriberManagement, "SubscriptionsManagement", "Friend", null,
      new { @style = "linkMy" })
     </div>
 
+<script src="https://maps.google.com/maps/api/js?key=AIzaSyAf8q-0gl4zbuqzUd48OVK6kS-RFFcZneg&callback=initMap" type="text/javascript"></script>
 
 @section scripts {
-    @Scripts.Render("~/Scripts/mapsApi.js")
+        @*@Scripts.Render("~/bundles/mapsApi")*@
+
+        <script type="text/javascript">
+
+            $(document).ready(function () {
+                GetMap();
+            });
+
+            function GetMap() {
+
+                google.maps.visualRefresh = true;
+                var Center = new google.maps.LatLng(55.752622, 37.617567);
+
+                var mapOptions = {
+                    zoom: 2,
+                    center: Center,
+                    mapTypeId: google.maps.MapTypeId.G_NORMAL_MAP
+                };
+
+                var map = new google.maps.Map(document.getElementById("canvas"), mapOptions);
+
+
+                var marker = new google.maps.Marker({
+                    map: map,
+                })
+
+                $.getJSON('@Url.Action("GetData","Place")', function (data) {
+
+                    $.each(data, function (i, item) {
+                        var marker = new google.maps.Marker({
+                            'position': new google.maps.LatLng(item.GeoLat, item.GeoLong),
+                            'map': map,
+                            'title': item.Name
+                        });
+
+
+                        marker.setIcon('http://maps.google.com/mapfiles/ms/icons/blue-dot.png')
+
+
+
+                        google.maps.event.addListener(marker, 'click', function () {
+                            infowindow.open(map, marker);
+                        });
+                    })
+                });
+            }
+        </script>
 }

@@ -24,8 +24,8 @@ function updateMarkerPosition(latLng) {
       latLng.lng()
     ].join(',      ');
 
-    //document.getElementById('GeoLat').value = latLng.lat();
-    //document.getElementById('GeoLong').value = latLng.lng();
+    document.getElementById('GeoLat').value = latLng.lat();
+    document.getElementById('GeoLong').value = latLng.lng();
 }
 
 function updateMarkerAddress(str) {

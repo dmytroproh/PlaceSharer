@@ -46,7 +46,9 @@
         </th>
     </tr>
 
-    @foreach (var item in Model)
+@using (Html.BeginForm("SubscriptionsManagement", "Friend", FormMethod.Post))
+{
+    foreach (var item in Model)
     {
         <tr>
             <td>
@@ -59,9 +61,11 @@
                 @Html.DisplayFor(modelItem => item.PostsCount)
             </td>
             <td>
-                @Html.ActionLink("Unfollow", "Delete", new { /* id=item.PrimaryKey */ })
+                <button name="unSubscriptionUser" type="submit" value="@item.SubscriptionUserName">UnSubscribe</button>
+
+                <button name="subscriptionUser" type="submit" value="@item.SubscriptionUserName">Subscribe</button>
             </td>
         </tr>
     }
-
+}
 </table>
