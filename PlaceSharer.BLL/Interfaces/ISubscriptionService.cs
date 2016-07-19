@@ -12,6 +12,5 @@ namespace PlaceSharer.BLL.Interfaces
         Task<OperationDetails> RemoveAsync(SubscriptionDTO subscriptionDTO);
         IEnumerable<SubscriptionDTO> GetSubscriptions(string Id);
         IEnumerable<SubscriptionsManageDTO> GetSubscriptionsWithUserInfo(string userId);
-        Task<string> GetSubscriptionIdByName(string userName);
     }
 }

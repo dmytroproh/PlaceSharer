@@ -83,7 +83,7 @@ namespace PlaceSharer.BLL.Services
             .ForMember("FirstName", u => u.MapFrom(us => us.SubscriptionUser.ClientProfile.Name))
             .ForMember("LastName", u => u.MapFrom(us => us.SubscriptionUser.ClientProfile.LastName))
             .ForMember("PostsCount", u => u.MapFrom(us => us.SubscriptionUser.Places.Count))
-            .ForMember("SubscriptionUserId", u => u.MapFrom(us => us.SubscriptionUser.UserName))
+            .ForMember("SubscriptionUserName", u => u.MapFrom(us => us.SubscriptionUser.UserName))
             ).CreateMapper();
             List<SubscriptionsManageDTO> subscriptions = new List<SubscriptionsManageDTO>();
             if (userId != null)
@@ -93,13 +93,7 @@ namespace PlaceSharer.BLL.Services
 
             return subscriptions;
         }
-
-        public async Task<string> GetSubscriptionIdByName(string userName)
-        {
-            ApplicationUser user = await Database.UserManager.FindByNameAsync(userName);
-            return user.Id.ToString();
-        }
-
+        
         public void Dispose()
         {
             Database.Dispose();
