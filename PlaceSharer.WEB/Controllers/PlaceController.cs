@@ -75,7 +75,7 @@ namespace PlaceSharer.WEB.Controllers
         {
             var config = new MapperConfiguration(r => r.CreateMap<PlaceDTO, UserPlaceViewModel>()).CreateMapper();
             var places = config.Map<IEnumerable<PlaceDTO>, List<UserPlaceViewModel>>(PlaceService.GetPlacesByUserId(User.Identity.GetUserId()));
-            
+
             return Json(places, JsonRequestBehavior.AllowGet);
         }
     }

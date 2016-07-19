@@ -1,12 +1,12 @@
-﻿@{
+﻿
+@{
     ViewBag.Title = Resources.Resource.Friends;
 }
 
-@using (Html.BeginForm("Index", "Friend", FormMethod.Post, new { id = "Form" }))
-{
-    @Html.DropDownList("Subscriptions", (SelectList)ViewBag.Subscriptions, "--Select One--", new { onchange = "document.getElementById('Form').submit();" })
-}
+@Html.DropDownList("friends", new SelectList(new string[] { "Vasa", "Kolya", "Ashot", "Pashot" }), "Fiends")
 
+<<<<<<< HEAD
+=======
 
 <script src="https://maps.google.com/maps/api/js?key=AIzaSyAf8q-0gl4zbuqzUd48OVK6kS-RFFcZneg&callback=initMap" type="text/javascript"></script>
 <div>
@@ -24,24 +24,27 @@
             });
 
             function GetMap() {
-
                 google.maps.visualRefresh = true;
-                var Center = new google.maps.LatLng(55.752622, 37.617567);
+                var Moscow = new google.maps.LatLng(55.752622, 37.617567);
 
                 var mapOptions = {
                     zoom: 2,
-                    center: Center,
+                    center: Moscow,
                     mapTypeId: google.maps.MapTypeId.G_NORMAL_MAP
                 };
 
+
                 var map = new google.maps.Map(document.getElementById("canvas"), mapOptions);
-
-
+                var myLatlng = new google.maps.LatLng(55.752622, 37.617567);
                 var marker = new google.maps.Marker({
+                    position: myLatlng,
                     map: map,
-                })
+                });
 
-                $.getJSON('@Url.Action("GetData", "Friend")', function (data) {
+                marker.setIcon('http://maps.google.com/mapfiles/ms/icons/red-dot.png')
+
+
+                $.getJSON('@Url.Action("GetData","Place")', function (data) {
 
                     $.each(data, function (i, item) {
                         var marker = new google.maps.Marker({
@@ -49,7 +52,6 @@
                             'map': map,
                             'title': item.Name
                         });
-
 
                         marker.setIcon('http://maps.google.com/mapfiles/ms/icons/blue-dot.png')
 
@@ -61,5 +63,6 @@
                     })
                 });
             }
-</script>
+        </script>
     }
+>>>>>>> cba65b55590452a360ad6befca66b8df04b11fa9

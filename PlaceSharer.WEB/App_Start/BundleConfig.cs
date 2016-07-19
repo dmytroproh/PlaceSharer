@@ -15,6 +15,8 @@ namespace PlaceSharer.WEB
                         "~/Scripts/jquery.validate*"));
             bundles.Add(new ScriptBundle("~/bundles/googleApi").Include(
                         "~/Scripts/googleApi.js"));
+            bundles.Add(new ScriptBundle("~/bundles/mapsApi").Include(
+                        "~/Scripts/mapsApi.js"));
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
 
