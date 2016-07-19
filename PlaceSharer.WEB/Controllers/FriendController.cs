@@ -51,7 +51,7 @@ namespace PlaceSharer.WEB.Controllers
                 SubscriptionDTO subscriptionDto = new SubscriptionDTO
                 {
                     SubscriberId = User.Identity.GetUserId(),
-                    SubscriptionUserId = await SubscriptionService.GetSubscriptionIdByName(subscriptionUser)
+                    SubscriptionUserId = await UserService.GetUserIdByName(subscriptionUser)
                 };
 
                 OperationDetails operationDetails = await SubscriptionService.CreateAsync(subscriptionDto);
@@ -66,7 +66,7 @@ namespace PlaceSharer.WEB.Controllers
                 SubscriptionDTO subscriptionDto = new SubscriptionDTO
                 {
                     SubscriberId = User.Identity.GetUserId(),
-                    SubscriptionUserId = await SubscriptionService.GetSubscriptionIdByName(unSubscriptionUser)
+                    SubscriptionUserId = await UserService.GetUserIdByName(unSubscriptionUser)
                 };
 
                 OperationDetails operationDetails = await SubscriptionService.RemoveAsync(subscriptionDto);
@@ -95,6 +95,7 @@ namespace PlaceSharer.WEB.Controllers
         }
 
         string userId = "";
+
         [HttpPost]
         public async Task <ActionResult> Index(string Subscriptions)
         {

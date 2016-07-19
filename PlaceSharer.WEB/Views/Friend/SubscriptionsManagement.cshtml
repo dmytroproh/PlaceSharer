@@ -60,12 +60,13 @@
             <td>
                 @Html.DisplayFor(modelItem => item.PostsCount)
             </td>
+            
             <td>
-                <button name="unSubscriptionUser" type="submit" value="@item.SubscriptionUserName">UnSubscribe</button>
+                <button name="unSubscriptionUser" type="submit" value=@item.SubscriptionUserName>UnSubscribe</button>
 
-                <button name="subscriptionUser" type="submit" value="@item.SubscriptionUserName">Subscribe</button>
+                <button name="subscriptionUser" type="submit" value=@item.SubscriptionUserName>Subscribe</button>
             </td>
         </tr>
-    }
+   }
 }
 </table>

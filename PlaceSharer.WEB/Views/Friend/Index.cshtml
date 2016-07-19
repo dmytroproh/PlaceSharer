@@ -2,6 +2,10 @@
     ViewBag.Title = Resources.Resource.Friends;
 }
 
+@Html.ActionLink(@Resources.Resource.SubscriberManagement, "SubscriptionsManagement", "Friend", null,
+     new { @style = "linkMy" })
+<br />
+
 @using (Html.BeginForm("Index", "Friend", FormMethod.Post, new { id = "Form" }))
 {
     @Html.DropDownList("Subscriptions", (SelectList)ViewBag.Subscriptions, "--Select One--", new { onchange = "document.getElementById('Form').submit();" })

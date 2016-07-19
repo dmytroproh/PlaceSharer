@@ -4,22 +4,14 @@
 
 }
 
-@foreach(UserPlaceViewModel item in ViewBag.Places)
-{
-    @item.Name
-    @item.Description
-    <br />
-}
-
+<div style="margin-left:10%; margin-top:15px; font-size: 18px">
+    @Html.ActionLink(@Resources.Resource.Create, "Create", "Place", null,
+     new { @style = "linkMy" })
+    <br>
+</div>
 
 <div id="canvas" style="height: 500px; width:800px;  margin-left: 5%"></div>
-    <div style="margin-left:10%; margin-top:15px; font-size: 18px">
-@Html.ActionLink(@Resources.Resource.Create, "Create", "Place", null,
-     new { @style = "linkMy" })
-<br>
-@Html.ActionLink(@Resources.Resource.SubscriberManagement, "SubscriptionsManagement", "Friend", null,
-     new { @style = "linkMy" })
-    </div>
+    
 
 <script src="https://maps.google.com/maps/api/js?key=AIzaSyAf8q-0gl4zbuqzUd48OVK6kS-RFFcZneg&callback=initMap" type="text/javascript"></script>
 
